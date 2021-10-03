@@ -52,9 +52,9 @@
     <div class="row">
         <div class="col col-lg-3">
             <!-- MENU -->
-            <ul class="nav flex-column nav-pills"> 
+            <ul class="nav flex-column nav-pills js-tab"> 
                 <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#one">Пользователи</a>
+                  <a class="nav-link " data-toggle="tab" href="#users">Пользователи</a>
                 </li> 
                 <li class="nav-item">
                   <a class="nav-link " data-toggle="tab" href="#create">Создание пользователей </a>
@@ -69,15 +69,16 @@
                   <a class="nav-link " data-toggle="tab" href="#sites">Список сайтов</a>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#interview">Записи на интервью <span class="badge badge-pill badge-danger">Новое</span></a>
+                  <a class="nav-link " data-toggle="tab" href="#interview">Записи на интервью <span class="badge badge-pill badge-danger">Новое</span></a>
                 </li> 
             </ul>
         </div>
+       
         <!-- CONTENT -->
         <div class="col col-lg-9">
-            <div class="tab-content">
+            <div class="tab-content js-tab-content">
                 <!-- Первый блок (он отображается по умолчанию, т.к. имеет классы show и active) -->
-                <div class="tab-pane fade " id="one">
+                <div class="tab-pane fade " id="users">
                     
                     <div class="container py-3 ">
                         <div class="bg-white p-2">
@@ -997,7 +998,7 @@
                         </div>
                     </div>
                 </div> 
-                <div class="tab-pane fade show active " id="interview">
+                <div class="tab-pane fade  " id="interview">
                     <div class="container py-2">
                         <h1>
                             Запись на интервью 
@@ -1249,6 +1250,66 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
+<script>
+    const localStorageName = 'api_desc_active'
+    const tabs = document.querySelectorAll('.js-tab a')
+    const tabContent = document.querySelectorAll('.js-tab-content .tab-pane') 
+    const activeClassName = ' active'
+    const activeClassName2 = ' show'
+    
+    // console.log(tabs, tabContent, activeClassName)
+        // console.log(tabs)
+    tabs.forEach(item => {
+        item.addEventListener('click', () => {
+            const href = item.getAttribute("href") 
+            localStorage.setItem(localStorageName, href.replace('#', ''))
+        })
+    });
+
+    $( document ).ready(function() {
+            
+        let isFirst = 0
+        let isFirst2 = 0
+
+        tabContent.forEach(item => {
+            const id = item.getAttribute("id") 
+            const current = localStorage.getItem(localStorageName )
+            if(current === id) {
+                item.classList.add('active')
+                item.classList.add('show') 
+                isFirst++
+            }
+            else {  
+                item.classList.remove('active')
+                item.classList.remove('show') 
+            } 
+        }) 
+       
+        tabs.forEach(item => {
+            const href = item.getAttribute("href") 
+            
+            const current = localStorage.getItem(localStorageName )
+            if(current === href.replace('#', '') ) {
+                item.classList.add('active')  
+                isFirst2++
+            }
+            else {  
+                item.classList.remove('active') 
+            }
+        })  
+
+        if(!isFirst) {
+            tabContent[0].classList.add('active')
+            tabContent[0].classList.add('show')
+        }
+        if(!isFirst2) {
+            tabs[0].classList.add('active') 
+        }
+    });
+   
+    
+
+</script>
 
 </body>
 </html>
