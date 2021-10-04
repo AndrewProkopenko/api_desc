@@ -44,16 +44,37 @@
         .delete { 
             color: firebrick;
             display: inline-block;
+        } 
+        .sticky-side {
+            position: sticky;
+            top: 0;
+        }
+        .t-100 {
+            top: calc(54px );
+        }
+        .z-100 {
+            z-index: 100;
         }
     </style>
 </head>
-<body>
+<body class="bg-light">
     
 <div class="container-fluid bg-light py-3">
-    <div class="row">
-        <div class="col col-lg-3">
+    <nav class="navbar  navbar-light sticky-side z-100 ">  
+        <button class="js-toggle-button navbar-toggler border-0 px-0"  >
+            <span class="js-toggle-item d-none navbar-toggler-icon"></span>
+            <span class="js-toggle-item">
+                <svg height="30px"  viewBox="0 0 329.26933 329" width="30px" xmlns="http://www.w3.org/2000/svg"><path fill='rgba(255, 12, 12, 0.5)' d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
+            </span>
+            
+        </button>
+    </nav>
+
+    
+    <div class="row"> 
+        <div class="col col-lg-3 js-toggle-target   ">
             <!-- MENU -->
-            <ul class="nav flex-column nav-pills js-tab"> 
+            <ul class="nav sticky-side t-100 flex-column nav-pills js-tab"> 
                 <li class="nav-item">
                   <a class="nav-link " data-toggle="tab" href="#users">Пользователи</a>
                 </li> 
@@ -76,7 +97,7 @@
         </div>
        
         <!-- CONTENT -->
-        <div class="col col-lg-9">
+        <div class="col ">
             <div class="tab-content js-tab-content">
                 <!-- Первый блок (он отображается по умолчанию, т.к. имеет классы show и active) -->
                 <div class="tab-pane fade " id="users">
@@ -1257,9 +1278,7 @@
     const tabContent = document.querySelectorAll('.js-tab-content .tab-pane') 
     const activeClassName = ' active'
     const activeClassName2 = ' show'
-    
-    // console.log(tabs, tabContent, activeClassName)
-        // console.log(tabs)
+     
     tabs.forEach(item => {
         item.addEventListener('click', () => {
             const href = item.getAttribute("href") 
@@ -1267,8 +1286,7 @@
         })
     });
 
-    $( document ).ready(function() {
-            
+    $( document ).ready(function() { 
         let isFirst = 0
         let isFirst2 = 0
 
@@ -1306,10 +1324,20 @@
         if(!isFirst2) {
             tabs[0].classList.add('active') 
         }
-    });
-   
-    
+    }); 
+</script>
 
+<script>    
+    const button = document.querySelector('.js-toggle-button')
+    const buttonToggle = document.querySelectorAll('.js-toggle-item')
+    const targetToggle = document.querySelector('.js-toggle-target')
+
+    button.addEventListener('click', () => {
+        buttonToggle.forEach( item => {
+            item.classList.toggle('d-none')
+        })
+        targetToggle.classList.toggle('d-none')
+    })
 </script>
 
 </body>
