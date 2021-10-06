@@ -250,8 +250,67 @@
                             </pre>
         
                             <hr>
+
+                            <h2>5. Соискатели - ученик</h2>
+                                <div class="route"> <div class="get">GET</div> /aspirant/pupils{СТРАНИЦА} </div> 
+                                <h4>Ответ: </h4>
+                                <pre>
+                                    {
+                                        users:
+                                        [
+                                            {
+                                                id: id, 
+                                                status: true,
+                                                created: new Date(), 
+                                                type: 'aspirant', 
+                                                subType: 'pupils', 
+                                                typeName: 'Ученик', 
+                                                name: '',  
+                                                speciality: '',  
+                                                phone: '',  
+                                                passport: '',  
+                                                email: '',  
+                                                group: '',  
+                                                paymentForm: '',  
+                                                sale: '',  
+                                                saleDetails: '' 
+                                            }
+                                        ],
+                                        "all":"общее количество сотрудников для пагинации"
+                                    }
+                                </pre>
+                                 
+                                <hr>
+                    
+                                <!-- 6 -->
+                                <h2>6. Соискатели - соискатели</h2>
+                                <div class="route"> <div class="get">GET</div> /aspirant/founder{СТР} </div> 
+                                <h4>Ответ: </h4>
+                                <pre>             
+                                    {
+                                        users:
+                                        [
+                                            {
+                                                id: id,  
+                                                status: true,
+                                                created: new Date(), 
+                                                type: 'aspirant', 
+                                                subType: 'founder', 
+                                                typeName: 'Соискатель', 
+                                                name: '',  
+                                                post: '',  
+                                                phone: '',  
+                                                adv: '' 
+                                            }
+                                        ],
+                                        "all":"общее количество сотрудников для пагинации"
+                                    }
+                                </pre> 
+                                <hr>
+
+                                
                             <!-- 5 -->
-                            <h2>5. Удалить одного пользователя </h2> 
+                            <h2>7. Удалить одного пользователя </h2> 
                             <div class="route"> <div class="delete">DELETE</div> /user/{id} </div>   
                             <h4>Ответ: </h4>
                             <pre>
@@ -263,7 +322,7 @@
                             <hr>
         
                             <!-- 6 -->
-                            <h2>6. Удалить массив пользователей </h2> 
+                            <h2>8. Удалить массив пользователей </h2> 
                             <div class="route"> <div class="delete">DELETE</div> /users/delete </div>   
                             <h4>Запрос: </h4>
                             <pre>
@@ -282,7 +341,7 @@
                             <hr>
         
                             <!-- 7 -->
-                            <h2>7. Switch одного пользователя</h2>
+                            <h2>9. Switch одного пользователя</h2>
                             <div class="route"> <div class="put">PUT</div> /user/switch/{id}</div>   
                             <h4> Ответ: </h4>
                             <pre>
@@ -294,7 +353,7 @@
         
                             <!-- 8 -->
                             <h2>
-                                8. Switch много пользователей
+                                10. Switch много пользователей
                             </h2>
                             <div class="route"> <div class="put">PUT</div> /user/switch-many </div>   
                             <h4>Запрос:</h4>
