@@ -33,18 +33,30 @@
             color: blue;
             display: inline-block;
         }
+        .get::after {
+            content: 'GET'
+        }
         .post { 
             color: rgb(57, 40, 165);
             display: inline-block;
+        }
+        .post::after {
+            content: 'POST'
         }
         .put {
             color: rgb(75, 150, 0);
             display: inline-block;
         }
+        .put::after {
+            content: 'PUT'
+        }
         .delete { 
             color: firebrick;
             display: inline-block;
         } 
+        .delete::after {
+            content: 'DELETE'
+        }
         .sticky-side {
             position: sticky;
             top: 0;
@@ -108,7 +120,7 @@
                             <h2>1) Список пользователей: </h2>
                             <h6>- получить список пользователей (staff, client(fiz, yur, individual), aspirant(pupils, founder))</h6>
                     
-                            <div class="route">1. <div class="get">GET</div> /staff/{type}/{СТРАНИЦА}</div>
+                            <div class="route">1. <div class="get"></div> /staff/{type}/{СТРАНИЦА}</div>
                     
                             <div class="title">(type - hr, admin, managers  и тд)</div>
                         
@@ -159,7 +171,7 @@
                             </pre>
                             <hr>
                             <!-- 2 -->
-                            <div class="route">2. <div class="get">GET</div>/client/fiz/{СТРАНИЦА}</div> 
+                            <div class="route">2. <div class="get"></div>/client/fiz/{СТРАНИЦА}</div> 
                             <h4>Ответ: </h4>
                             <pre>
                                 {
@@ -184,7 +196,7 @@
         
                             <hr>
                             <!-- 3 -->
-                            <div class="route">3. <div class="get">GET</div>client/individual/{СТРАНИЦА}</div>  
+                            <div class="route">3. <div class="get"></div>client/individual/{СТРАНИЦА}</div>  
                             <h4>Ответ: </h4>
                             <pre>
                                 {
@@ -218,7 +230,7 @@
         
                             <hr>
                             <!-- 4 --> 
-                            <div class="route">4. <div class="get">GET</div> client/yur/{СТРАНИЦА} - получить список всех yur-ов по странице </div>   
+                            <div class="route">4. <div class="get"></div> client/yur/{СТРАНИЦА} - получить список всех yur-ов по странице </div>   
                             <h4>Ответ: </h4>
                             <pre> 
                                     {
@@ -252,7 +264,7 @@
                             <hr>
 
                             <h2>5. Соискатели - ученик</h2>
-                                <div class="route"> <div class="get">GET</div> /aspirant/pupils{СТРАНИЦА} </div> 
+                                <div class="route"> <div class="get"></div> /aspirant/pupils{СТРАНИЦА} </div> 
                                 <h4>Ответ: </h4>
                                 <pre>
                                     {
@@ -284,7 +296,7 @@
                     
                                 <!-- 6 -->
                                 <h2>6. Соискатели - соискатели</h2>
-                                <div class="route"> <div class="get">GET</div> /aspirant/founder{СТР} </div> 
+                                <div class="route"> <div class="get"></div> /aspirant/founder{СТР} </div> 
                                 <h4>Ответ: </h4>
                                 <pre>             
                                     {
@@ -311,7 +323,7 @@
                                 
                             <!-- 5 -->
                             <h2>7. Удалить одного пользователя </h2> 
-                            <div class="route"> <div class="delete">DELETE</div> /user/{id} </div>   
+                            <div class="route"> <div class="delete"></div> /user/{id} </div>   
                             <h4>Ответ: </h4>
                             <pre>
                                 {
@@ -323,7 +335,7 @@
         
                             <!-- 6 -->
                             <h2>8. Удалить массив пользователей </h2> 
-                            <div class="route"> <div class="delete">DELETE</div> /users/delete </div>   
+                            <div class="route"> <div class="delete"></div> /users/delete </div>   
                             <h4>Запрос: </h4>
                             <pre>
                                 {
@@ -342,7 +354,7 @@
         
                             <!-- 7 -->
                             <h2>9. Switch одного пользователя</h2>
-                            <div class="route"> <div class="put">PUT</div> /user/switch/{id}</div>   
+                            <div class="route"> <div class="put"></div> /user/switch/{id}</div>   
                             <h4> Ответ: </h4>
                             <pre>
                                 {
@@ -355,7 +367,7 @@
                             <h2>
                                 10. Switch много пользователей
                             </h2>
-                            <div class="route"> <div class="put">PUT</div> /user/switch-many </div>   
+                            <div class="route"> <div class="put"></div> /user/switch-many </div>   
                             <h4>Запрос:</h4>
                             <pre>
                                 {
@@ -385,7 +397,7 @@
         
                     <h2>1. Сотрудники </h2> 
             
-                    <div class="route"> <div class="post">POST</div> /staff</div> 
+                    <div class="route"> <div class="post"></div> /staff</div> 
                 
                     <h4>Запрос: </h4>
         
@@ -448,7 +460,7 @@
                     <!-- 2 -->
         
                     <h2>2. Клиент - физ лицо</h2>
-                    <div class="route"> <div class="post">POST</div> /client/fiz </div> 
+                    <div class="route"> <div class="post"></div> /client/fiz </div> 
                     <h4>Запрос: </h4>
                     <pre>
                         {
@@ -487,7 +499,7 @@
         
                     <!-- 3 -->
                     <h2> 3. Клиент - юр лицо</h2>
-                    <div class="route"> <div class="post">POST</div> /client/yur </div> 
+                    <div class="route"> <div class="post"></div> /client/yur </div> 
                     <h4>Запрос: </h4>
                     <pre>
                         {
@@ -534,7 +546,7 @@
                     <!-- 4 -->
         
                     <h2>4. Клиент - Индивидуальный предприниматель</h2>
-                    <div class="route"> <div class="post">POST</div> /client/individual </div> 
+                    <div class="route"> <div class="post"></div> /client/individual </div> 
                     <h4>Запрос: </h4>
                     <pre>                    
                             {
@@ -581,26 +593,34 @@
         
                     <!-- 5 -->
                     <h2>5. Соискатели - ученик</h2>
-                    <div class="route"> <div class="post">POST</div> /aspirant/pupils </div> 
+                    <div class="route"> <div class="post"></div> /aspirant/pupils </div> 
                     <h4>Запрос: </h4>
                     <pre>
                         {
-                            id: id, 
-                            status: true,
-                            created: new Date(), 
-                            type: 'aspirant', 
-                            subType: 'pupils', 
-                            typeName: 'Ученик', 
-                            name: '',  
-                            speciality: '',  
-                            phone: '',  
-                            passport: '',  
-                            email: '',  
-                            group: '',  
-                            paymentForm: '',  
-                            sale: '',  
-                            saleDetails: '' 
-                        }
+                            userDetails: {
+                                id: id, 
+                                status: true,
+                                created: new Date(), 
+                                type: 'aspirant', 
+                                subType: 'pupils', 
+                                typeName: 'Ученик', 
+                                name: '',  
+                                speciality: '',  
+                                phone: '',  
+                                passport: '',  
+                                email: '',  
+                                group: '',  
+                                paymentForm: '',  
+                                sale: '',  
+                                saleDetails: '' 
+                            },
+                            additionalContact: [], 
+                            privateData: {               
+                                user_id: 1,
+                                timeStart: '', 
+                                comment: ''
+                            }
+                        }  
                     </pre>
                     <h4>Ответ</h4>
                     <pre>
@@ -612,21 +632,29 @@
         
                     <!-- 6 -->
                     <h2>6. Соискатели - соискатели</h2>
-                    <div class="route"> <div class="post">POST</div> /aspirant/founder </div> 
+                    <div class="route"> <div class="post"></div> /aspirant/founder </div> 
                     <h4>Запрос: </h4>
-                    <pre>             
+                    <pre>         
                         {
-                            id: id,  
-                            status: true,
-                            created: new Date(), 
-                            type: 'aspirant', 
-                            subType: 'founder', 
-                            typeName: 'Соискатель', 
-                            name: '',  
-                            post: '',  
-                            phone: '',  
-                            adv: '' 
-                        }
+                            userDetails: {
+                                id: id,  
+                                status: true,
+                                created: new Date(), 
+                                type: 'aspirant', 
+                                subType: 'founder', 
+                                typeName: 'Соискатель', 
+                                name: '',  
+                                post: '',  
+                                phone: '',  
+                                adv: '' 
+                            },
+                            additionalContact: [], 
+                            privateData: {               
+                                user_id: 1,
+                                timeStart: '', 
+                                comment: ''
+                            }
+                        }  
                     </pre>
                     <h4>Ответ</h4>
                     <pre>
@@ -647,8 +675,32 @@
                         <div class="bg-white p-3">
         
                             <h2> Обновление пользователя</h2>
-         
-                            тоже самое что и создание, только Запрос PUT
+                            
+                            <h4>Обновление Деталей пользователя</h4>
+                            <h6>(запрос повторяется как в создании пользователя (userDetails) )</h6>
+                            <div class="route"> <div class="put"></div>  /staff/details/{id пользователя} </div>  
+                            <div class="route"> <div class="put"></div>  /client/fiz/details/{id пользователя} </div>  
+                            <div class="route"> <div class="put"></div>  /client/yur/details/{id пользователя} </div>  
+                            <div class="route"> <div class="put"></div>  /client/individual/details/{id пользователя} </div>   
+                            <div class="route"> <div class="put"></div>  /aspirant/pupils/details/{id пользователя} </div>   
+                            <div class="route"> <div class="put"></div>  /aspirant/founder/details/{id пользователя} </div>    
+                            
+                            <hr>
+
+                            <h4>Обновление Дополнительные Данные</h4>
+                            <h6>(запрос повторяется как в создании пользователя (privateData) )</h6>
+                            <div class="route"> <div class="put"></div>  /staff/private/{id пользователя} </div>  
+                            <div class="route"> <div class="put"></div>  /client/fiz/private/{id пользователя} </div>  
+                            <div class="route"> <div class="put"></div>  /client/yur/private/{id пользователя} </div>  
+                            <div class="route"> <div class="put"></div>  /client/individual/private/{id пользователя} </div>   
+                            <div class="route"> <div class="put"></div>  /aspirant/pupils/private/{id пользователя} </div>   
+                            <div class="route"> <div class="put"></div>  /aspirant/founder/private/{id пользователя} </div>   
+
+                            <hr>
+
+                            <h4>Обновление Дополнительных контактов</h4>
+                            <h6>(запрос повторяется как в создании пользователя (additionalContact) )</h6>
+                            <div class="route"> <div class="put"></div>  /{user type}/contact/{id контакта} </div>     
                         </div>
                     </div>
                 </div> 
@@ -666,7 +718,7 @@
         
                             <h2>1. КЛИЕНТЫ </h2> 
         
-                            <div class="route"> <div class="get">GET</div> /users/staff/{id}/details</div> 
+                            <div class="route"> <div class="get"></div> /users/staff/{id}/details</div> 
         
                             
                             <h4>Ответ</h4>
@@ -701,7 +753,7 @@
                             <hr>
                             
                             <!-- 2 -->
-                            <div class="route"> 2. <div class="get">GET</div> /users/staff/{id}/private</div> 
+                            <div class="route"> 2. <div class="get"></div> /users/staff/{id}/private</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -719,12 +771,13 @@
                             <hr>
         
                             <!-- 3 -->
-                            <div class="route"> 3. <div class="get">GET</div> /users/staff/{id}/contacts</div> 
+                            <div class="route"> 3. <div class="get"></div> /users/staff/{id}/contacts</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 [
                                     {
                                         user_id: 1,
+                                        id: 'contact_id',
                                         name: '', 
                                         relationship: '', 
                                         phone: '', 
@@ -736,9 +789,9 @@
                             <hr>
         
                             <!-- 4 -->
-                            <div class="route"> 4. <div class="get">GET</div> /users/staff/{id}/login  </div> 
-                            <div class="route"> 4.1 <div class="get">GET</div> /users/client/{id}/login  </div> 
-                            <div class="route"> 4.2 <div class="get">GET</div> /users/aspirant/{id}/login  </div> 
+                            <div class="route"> 4. <div class="get"></div> /users/staff/{id}/login  </div> 
+                            <div class="route"> 4.1 <div class="get"></div> /users/client/{id}/login  </div> 
+                            <div class="route"> 4.2 <div class="get"></div> /users/aspirant/{id}/login  </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -755,7 +808,7 @@
         
                             <!-- 5 -->
                             
-                            <div class="route"> 5. <div class="get">GET</div>/users/staff/{id}/logs   </div> 
+                            <div class="route"> 5. <div class="get"></div>/users/staff/{id}/logs   </div> 
                             Ответ: ??
          
         
@@ -765,7 +818,7 @@
                                 СОИСКАТЕЛИ 
                             </h2>
         
-                            <div class="route"> 6. <div class="get">GET</div> /users/aspirant/pupils/{id}/details </div> 
+                            <div class="route"> 6. <div class="get"></div> /users/aspirant/pupils/{id}/details </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 { 
@@ -789,7 +842,7 @@
                             
                             <hr>
         
-                            <div class="route"> 6.1. <div class="get">GET</div> /users/aspirant/founder/{id}/details </div> 
+                            <div class="route"> 6.1. <div class="get"></div> /users/aspirant/founder/{id}/details </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {  
@@ -809,7 +862,7 @@
                             <hr>
         
         
-                            <div class="route"> 7. <div class="get">GET</div> /users/aspirant/{id}/private </div> 
+                            <div class="route"> 7. <div class="get"></div> /users/aspirant/{id}/private </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -824,13 +877,14 @@
                             
                             <hr>
         
-                            <div class="route"> 8. <div class="get">GET</div>  /users/aspirant/{id}/contacts</div> 
-                            <div class="route"> 8.1. <div class="get">GET</div>  /users/client/{id}/contacts</div> 
+                            <div class="route"> 8. <div class="get"></div>  /users/aspirant/{id}/contacts</div> 
+                            <div class="route"> 8.1. <div class="get"></div>  /users/client/{id}/contacts</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 [
                                     {
                                         user_id: 1,
+                                        id: 'contact_id',
                                         name: '', 
                                         post: '', 
                                         phone: '', 
@@ -846,7 +900,7 @@
                                 КЛИЕНТЫ
                             </h2>
         
-                            <div class="route"> 9. <div class="get">GET</div> /users/client/fiz/{id}/details</div> 
+                            <div class="route"> 9. <div class="get"></div> /users/client/fiz/{id}/details</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -866,7 +920,7 @@
                             <hr>
         
                             
-                            <div class="route"> 9.1. <div class="get">GET</div> /users/client/yur/{id}/details</div> 
+                            <div class="route"> 9.1. <div class="get"></div> /users/client/yur/{id}/details</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 { 
@@ -893,7 +947,7 @@
                             
                             <hr>
         
-                            <div class="route"> 9.2. <div class="get">GET</div> /users/client/individual/{id}/details</div> 
+                            <div class="route"> 9.2. <div class="get"></div> /users/client/individual/{id}/details</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 { 
@@ -922,12 +976,23 @@
                             <hr>
         
                             <h2> 
-                                Пересохранение данных для странички пользователя    
+                                Пересохранение и удаление данных для странички пользователя    
                             </h2>
                             <p>
                                 ( тоже что и получение, только Запросы PUT )
                             </p>
-        
+                            <h4>Например</h4>
+                            <div class="route"> <div class="put"></div> /users/staff/{id}/contacts/{contact_id}</div> 
+                            <h4>Ответ</h4>
+                            <pre>
+                                200: Сохранено
+                            </pre>
+
+                            <div class="route">  <div class="delete"></div> /users/staff/{id}/contacts/{contact_id}</div> 
+                            <h4>Ответ</h4>
+                            <pre>
+                                200: Удалено
+                            </pre>
                         </div>
                     </div>
                 </div> 
@@ -942,7 +1007,7 @@
                            
         
                             <h2>1. Получить все сайты </h2>
-                            <div class="route"> <div class="get">GET</div>/site-list </div>  
+                            <div class="route"> <div class="get"></div>/site-list </div>  
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -970,7 +1035,7 @@
                             <hr>
         
                             <h2>2. Обновить сайт  </h2>
-                            <div class="route"> <div class="put">PUT</div> /site-list/{site_id} </div>  
+                            <div class="route"> <div class="put"></div> /site-list/{site_id} </div>  
                             <h4>Запрос</h4>
                             <pre>
                                 { 
@@ -994,7 +1059,7 @@
         
         
                             <h2>3. Создать один сайт  </h2>
-                            <div class="route"> <div class="post">POST</div> /site-list/add  </div>  
+                            <div class="route"> <div class="post"></div> /site-list/add  </div>  
                             <h4>Запрос</h4>
                             <pre>
                                 { 
@@ -1018,7 +1083,7 @@
         
         
                             <h2>4. Создать сразу много сайтов </h2>
-                            <div class="route"> <div class="post">POST</div> /site-list/add-many </div>  
+                            <div class="route"> <div class="post"></div> /site-list/add-many </div>  
                             <h4>Запрос</h4>
                             <pre>
                                 [
@@ -1059,12 +1124,12 @@
                             <hr>
         
                             <h2>5.  Удалить сайт</h2>
-                            <div class="route"> <div class="delete">DELETE</div> /site-list/{id}  </div>  
+                            <div class="route"> <div class="delete"></div> /site-list/{id}  </div>  
                              
                             <hr>
         
                             <h2>6. Удалить несколько сайтов </h2>
-                            <div class="route"> <div class="delete">DELETE</div> /site-list/delete-many  </div>  
+                            <div class="route"> <div class="delete"></div> /site-list/delete-many  </div>  
                             <h4>Запрос</h4>
                             <pre> 
                                 {
@@ -1090,7 +1155,7 @@
                            
         
                             <h2>1. Список всех записей на интервью  </h2>
-                            <div class="route"> <div class="get">GET</div> /interview-base/{СТРАНИЦА}</div>  
+                            <div class="route"> <div class="get"></div> /interview-base/{СТРАНИЦА}</div>  
                             <h4> ЗАПРОС (данные из фильтров)</h4>
                             <pre>
                                 {
@@ -1127,7 +1192,7 @@
 
 
                             <h2> 2. Получить вакансии  </h2>
-                            <div class="route"> <div class="get">GET</div>/ interviews/vacancies</div>  
+                            <div class="route"> <div class="get"></div>/ interviews/vacancies</div>  
                             <h4>ОТВЕТ</h4>
                             <pre>
                                 {
@@ -1156,7 +1221,7 @@
                             <hr>
 
                             <h2> 3. Получить статусы  </h2>
-                            <div class="route"> <div class="get">GET</div>/ interviews/statuses</div>  
+                            <div class="route"> <div class="get"></div>/ interviews/statuses</div>  
                             <h4>ОТВЕТ</h4>
                             <pre>
                                 { 
@@ -1177,7 +1242,7 @@
                             <hr>
 
                             <h2>4. Получить пользователей для создания интервью </h2>
-                            <div class="route"> <div class="get">GET</div>/interviews/users/{имя}</div>  
+                            <div class="route"> <div class="get"></div>/interviews/users/{имя}</div>  
                             <h5>(хотелось бы апи как с получением адресса )</h5>
                             <h4>ОТВЕТ</h4>
                             <pre>
@@ -1199,7 +1264,7 @@
                             <hr>
 
                             <h2> 5. Создать интервью </h2>
-                            <div class="route"> <div class="post">POST</div> /interview-create </div>   
+                            <div class="route"> <div class="post"></div> /interview-create </div>   
                             <h4>ЗАПРОС</h4>
                             <pre>
                                 {
@@ -1226,7 +1291,7 @@
 
 
                             <h2>  7. Получение одного интервью   </h2>
-                            <div class="route"> <div class="get">GET</div> /interview/{id}  </div>  
+                            <div class="route"> <div class="get"></div> /interview/{id}  </div>  
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -1247,7 +1312,7 @@
 
 
                             <h2>  8. Обновить комментарий одного интервью   </h2>
-                            <div class="route"> <div class="put">PUT</div> /interview/comment  </div>  
+                            <div class="route"> <div class="put"></div> /interview/comment  </div>  
                             <h4>Запрос</h4>
                             <pre>
                                 {
@@ -1265,7 +1330,7 @@
 
 
                             <h2> 9. Удалить интервью </h2>
-                            <div class="route"> <div class="delete">DELETE</div> /interview/{id}  </div>  
+                            <div class="route"> <div class="delete"></div> /interview/{id}  </div>  
                              
                             <h4>Ответ: </h4>
                             <pre>
@@ -1276,7 +1341,7 @@
                             <hr>
 
                             <h2>  10. Обновить интервью  </h2>
-                            <div class="route"> <div class="put">PUT</div> /interview/{id}  </div>  
+                            <div class="route"> <div class="put"></div> /interview/{id}  </div>  
                              
                             <h4>Запрос: </h4>
                             <pre>
