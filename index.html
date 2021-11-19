@@ -120,7 +120,7 @@
                             <h2>1) Список пользователей: </h2>
                             <h6>- получить список пользователей (staff, client(fiz, yur, individual), aspirant(pupils, founder))</h6>
                     
-                            <div class="route">1. <div class="get"></div> /staff/{type}/{СТРАНИЦА}</div>
+                            <div class="route">1. <div class="get"></div> /users/staff/{type}/{СТРАНИЦА}</div>
                     
                             <div class="title">(type - hr, admin, managers  и тд)</div>
                         
@@ -171,7 +171,7 @@
                             </pre>
                             <hr>
                             <!-- 2 -->
-                            <div class="route">2. <div class="get"></div>/client/fiz/{СТРАНИЦА}</div> 
+                            <div class="route">2. <div class="get"></div> /users/client/fiz/{СТРАНИЦА}</div> 
                             <h4>Ответ: </h4>
                             <pre>
                                 {
@@ -196,7 +196,7 @@
         
                             <hr>
                             <!-- 3 -->
-                            <div class="route">3. <div class="get"></div>client/individual/{СТРАНИЦА}</div>  
+                            <div class="route">3. <div class="get"></div> /users/client/individual/{СТРАНИЦА}</div>  
                             <h4>Ответ: </h4>
                             <pre>
                                 {
@@ -230,7 +230,7 @@
         
                             <hr>
                             <!-- 4 --> 
-                            <div class="route">4. <div class="get"></div> client/yur/{СТРАНИЦА} - получить список всех yur-ов по странице </div>   
+                            <div class="route">4. <div class="get"></div> /users/client/yur/{СТРАНИЦА} - получить список всех yur-ов по странице </div>   
                             <h4>Ответ: </h4>
                             <pre> 
                                     {
@@ -264,7 +264,7 @@
                             <hr>
 
                             <h2>5. Соискатели - ученик</h2>
-                                <div class="route"> <div class="get"></div> /aspirant/pupils{СТРАНИЦА} </div> 
+                                <div class="route"> <div class="get"></div> /users/aspirant/pupils{СТРАНИЦА} </div> 
                                 <h4>Ответ: </h4>
                                 <pre>
                                     {
@@ -296,7 +296,7 @@
                     
                                 <!-- 6 -->
                                 <h2>6. Соискатели - соискатели</h2>
-                                <div class="route"> <div class="get"></div> /aspirant/founder{СТР} </div> 
+                                <div class="route"> <div class="get"></div> /users/aspirant/founder{СТР} </div> 
                                 <h4>Ответ: </h4>
                                 <pre>             
                                     {
@@ -718,7 +718,7 @@
         
                             <h2>1. КЛИЕНТЫ </h2> 
         
-                            <div class="route"> <div class="get"></div> /users/staff/{id}/details</div> 
+                            <div class="route"> <div class="get"></div> /user/staff/{id}/details</div> 
         
                             
                             <h4>Ответ</h4>
@@ -753,7 +753,7 @@
                             <hr>
                             
                             <!-- 2 -->
-                            <div class="route"> 2. <div class="get"></div> /users/staff/{id}/private</div> 
+                            <div class="route"> 2. <div class="get"></div> /user/staff/{id}/private</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -771,7 +771,7 @@
                             <hr>
         
                             <!-- 3 -->
-                            <div class="route"> 3. <div class="get"></div> /users/staff/{id}/contacts</div> 
+                            <div class="route"> 3. <div class="get"></div> /user/staff/{id}/contacts</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 [
@@ -789,9 +789,9 @@
                             <hr>
         
                             <!-- 4 -->
-                            <div class="route"> 4. <div class="get"></div> /users/staff/{id}/login  </div> 
-                            <div class="route"> 4.1 <div class="get"></div> /users/client/{id}/login  </div> 
-                            <div class="route"> 4.2 <div class="get"></div> /users/aspirant/{id}/login  </div> 
+                            <div class="route"> 4. <div class="get"></div> /user/staff/{id}/login  </div> 
+                            <div class="route"> 4.1 <div class="get"></div> /user/client/{id}/login  </div> 
+                            <div class="route"> 4.2 <div class="get"></div> /user/aspirant/{id}/login  </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -808,7 +808,7 @@
         
                             <!-- 5 -->
                             
-                            <div class="route"> 5. <div class="get"></div>/users/staff/{id}/logs   </div> 
+                            <div class="route"> 5. <div class="get"></div>/user/staff/{id}/logs   </div> 
                             Ответ: ??
          
         
@@ -818,7 +818,7 @@
                                 СОИСКАТЕЛИ 
                             </h2>
         
-                            <div class="route"> 6. <div class="get"></div> /users/aspirant/pupils/{id}/details </div> 
+                            <div class="route"> 6. <div class="get"></div> /user/aspirant/pupils/{id}/details </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 { 
@@ -842,7 +842,7 @@
                             
                             <hr>
         
-                            <div class="route"> 6.1. <div class="get"></div> /users/aspirant/founder/{id}/details </div> 
+                            <div class="route"> 6.1. <div class="get"></div> /user/aspirant/founder/{id}/details </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {  
@@ -862,7 +862,7 @@
                             <hr>
         
         
-                            <div class="route"> 7. <div class="get"></div> /users/aspirant/{id}/private </div> 
+                            <div class="route"> 7. <div class="get"></div> /user/aspirant/{id}/private </div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -877,8 +877,8 @@
                             
                             <hr>
         
-                            <div class="route"> 8. <div class="get"></div>  /users/aspirant/{id}/contacts</div> 
-                            <div class="route"> 8.1. <div class="get"></div>  /users/client/{id}/contacts</div> 
+                            <div class="route"> 8. <div class="get"></div>  /user/aspirant/{id}/contacts</div> 
+                            <div class="route"> 8.1. <div class="get"></div>  /user/client/{id}/contacts</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 [
@@ -900,7 +900,7 @@
                                 КЛИЕНТЫ
                             </h2>
         
-                            <div class="route"> 9. <div class="get"></div> /users/client/fiz/{id}/details</div> 
+                            <div class="route"> 9. <div class="get"></div> /user/client/fiz/{id}/details</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 {
@@ -920,7 +920,7 @@
                             <hr>
         
                             
-                            <div class="route"> 9.1. <div class="get"></div> /users/client/yur/{id}/details</div> 
+                            <div class="route"> 9.1. <div class="get"></div> /user/client/yur/{id}/details</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 { 
@@ -947,7 +947,7 @@
                             
                             <hr>
         
-                            <div class="route"> 9.2. <div class="get"></div> /users/client/individual/{id}/details</div> 
+                            <div class="route"> 9.2. <div class="get"></div> /user/client/individual/{id}/details</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 { 
@@ -982,13 +982,13 @@
                                 ( тоже что и получение, только Запросы PUT )
                             </p>
                             <h4>Например</h4>
-                            <div class="route"> <div class="put"></div> /users/staff/{id}/contacts/{contact_id}</div> 
+                            <div class="route"> <div class="put"></div> /user/staff/{id}/contacts/{contact_id}</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 200: Сохранено
                             </pre>
 
-                            <div class="route">  <div class="delete"></div> /users/staff/{id}/contacts/{contact_id}</div> 
+                            <div class="route">  <div class="delete"></div> /user/staff/{id}/contacts/{contact_id}</div> 
                             <h4>Ответ</h4>
                             <pre>
                                 200: Удалено
@@ -1411,6 +1411,7 @@
     });
 
     $( document ).ready(function() { 
+        // isFirst, isFirst2 - для опредеения первого входа и вкл первого активного
         let isFirst = 0
         let isFirst2 = 0
 
@@ -1439,6 +1440,14 @@
             else {  
                 item.classList.remove('active') 
             }
+
+            item.addEventListener('click', () => {
+                console.log('click')
+                window.scrollTo({
+                    top: 0, 
+                    behavior: 'smooth'
+                })
+            })
         })  
 
         if(!isFirst) {
@@ -1456,7 +1465,7 @@
     const buttonToggle = document.querySelectorAll('.js-toggle-item')
     const targetToggle = document.querySelector('.js-toggle-target')
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', () => { 
         buttonToggle.forEach( item => {
             item.classList.toggle('d-none')
         })
