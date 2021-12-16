@@ -84,7 +84,7 @@
 
     
     <div class="row"> 
-        <div class="col col-lg-3 js-toggle-target   ">
+        <div class="col col-lg-2 js-toggle-target   ">
             <!-- MENU -->
             <ul class="nav sticky-side t-100 flex-column nav-pills js-tab"> 
                 <li class="nav-item">
@@ -103,7 +103,16 @@
                   <a class="nav-link " data-toggle="tab" href="#sites">Список сайтов</a>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#interview">Записи на интервью <span class="badge badge-pill badge-danger">Новое</span></a>
+                  <a class="nav-link " data-toggle="tab" href="#interview">Записи на интервью</a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link " data-toggle="tab" href="#order-list">Список заказов <span class="badge badge-pill badge-danger">Новое</span></a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link " data-toggle="tab" href="#order">Страница заказа <span class="badge badge-pill badge-danger">Новое</span></a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link " data-toggle="tab" href="#order-action">Действия с заказом <span class="badge badge-pill badge-danger">Новое</span></a>
                 </li> 
             </ul>
         </div>
@@ -1378,6 +1387,445 @@
                                    
                         </div>
                     </div>
+                </div> 
+
+                <!-- заказы -->
+                <div class="tab-pane fade  " id="order-list">
+                    <div class="container py-2">
+                        <h1>
+                            Список заказов 
+                        </h1>
+                    </div>
+                    <div class="container py-3">
+                        <div class="bg-white p-3">
+                            
+                           
+
+
+                            <h2> 1. Список всех доступных заказов для менеджера </h2>
+                            <h2> 2. Список заказов доступных у назначенного мастера </h2>
+                            <h2> 3. Список курьера </h2>
+                            <div class="route"> <div class="get"></div> /orders/{СТРАНИЦА}</div>  
+                            <h4> ЗАПРОС ( данные из фильтров + id пользователя который делает запрос )</h4>
+                            <pre>
+                                {   
+                                    user_id: 'managerId1', // как-то передавать, что бы получать только доступные заказы 
+                                    dataFrom: "",  // дата от
+                                    dataTo: "", // дата до
+                                    category: "" , 
+                                    isExecute: true, // Исполнить
+                                    search: "" // поисковая строка
+                                }
+                            </pre>
+                            <hr>
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    orders: [
+                                        {
+                                            tip: '',
+                                            typedFields: {}, 
+                                            id: '', 
+                                            created: '',  
+                                            status: '',
+                                            category: '',
+                                            name: '',
+                                            executionTime: '',
+                                            address: '', // до улицы
+                                            addressDom: '',  // квартира 
+                                            addressIntercom : '', // домофон
+                                            metroStation: '',
+                                            geo: '',
+                                            amount: '', //Объявленная сумма
+                                            isGuarantee: false, 
+                                            isQuickly: false, 
+                                            isRecall: false, 
+                                            isProcessing: false, 
+                                            comment: '',   
+                                            model: '', 
+                                            defect: '', 
+                                            prepayment: '', 
+                                            isCashless: false, 
+                                            orderDepartment: '', 
+                                            isPrepayment: false, 
+                                            isLogistics: false,  
+                                            isCorporate: false,  
+                                            departureEngineer: '', 
+                                            courierTake: '', 
+                                            courierGive: '', 
+                                            courierGive: '', 
+                                            manager: '', 
+                                             
+                                            abp: [],  // акт работ
+                                            sms: [],  // история смс 
+                                            additionalContact: [], // доп телефоны
+                                            additionalExpenses: [], // доп расходы 
+                                        }, ....
+                                    ],
+                                    "all":"общее количество сотрудников для пагинации"
+                                }
+                            </pre>
+                            <hr>
+ 
+
+
+                        </div>
+                    </div> 
+                </div> 
+                <div class="tab-pane fade  " id="order">
+                    <div class="container py-2">
+                        <h1>
+                            Страница заказа
+                        </h1>
+                    </div>
+
+
+
+                    <div class="container py-3">
+                        <div class="bg-white p-3">
+                           
+                            <h2>  1. Получение одного заказа   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}  </div>  
+                            <h4>Ответ</h4>
+                            <pre>
+                                {
+                                    tip: '',
+                                    typedFields: {}, 
+                                    id: '', 
+                                    created: '',  
+                                    status: '',
+                                    category: '',
+                                    name: '',
+                                    executionTime: '',
+                                    address: '',
+                                    addressDom: '', 
+                                    addressIntercom : '',
+                                    metroStation: '',
+                                    geo: '',
+                                    amount: '',
+                                    isGuarantee: false, 
+                                    isQuickly: false, 
+                                    isRecall: false, 
+                                    isProcessing: false, 
+                                    comment: '',  
+                                    model: '', 
+                                    defect: '', 
+                                    prepayment: '', 
+                                    isCashless: false, 
+                                    orderDepartment: '',
+                                    // после создания
+                                    isPrepayment: false, 
+                                    isLogistics: false,  
+                                    isCorporate: false,  
+                                    departureEngineer: '', 
+                                    courierTake: '', 
+                                    courierGive: '', 
+                                    courierGive: '', 
+                                    manager: '',  
+                                    abp: [], 
+                                    sms: [], 
+                                    additionalContact: [],
+                                    additionalExpenses: [],
+                                }
+                            </pre>
+                            <hr>
+         
+                            <h2> 2. Получение логов   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/logs  </div>   
+                            <hr> 
+
+                            <h2>  4. Копирование (Полное)   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/copy-full  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                {
+                                    id: '', 
+                                    category: '', 
+                                    model: '',
+                                    phone: '', 
+                                    name: '',
+                                    metro:'', 
+                                    address: '', 
+                                    addressDom: '',  
+                                }
+                            </pre> 
+                            <h4>Или лучше ответ в виде строки</h4>
+                            <pre>
+                                {
+                                    string: 'ID: id, Категория; Категория, Марка/модель техники: Марка, Телефоны: Телефоны,  
+                                            Имя клиента:Имя , Метро: Метро, Адрес: Адрес, Квартира: Квартира ',   
+                                }
+                            </pre> 
+
+                            <hr> 
+
+
+                            <h2>  4. Копирование (Краткое)   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/copy-trim  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                {
+                                    id: '',   
+                                    model: '',  
+                                    metro:'', 
+                                    address: '',  
+                                    defect: '',  
+                                }
+                            </pre> 
+                            <hr> 
+
+                            <h2>  4. Копирование (Сводное)  </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/copy-svod  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                {
+                                    id: '', 
+                                    category: '', 
+                                    model: '', 
+                                    name: '',
+                                    metro:'', 
+                                    address: '', 
+                                    addressDom: '',  
+                                }
+                            </pre> 
+                            <hr> 
+
+
+
+                        </div>
+                    </div> 
+                </div> 
+                <div class="tab-pane fade  " id="order-action">
+                    <div class="container py-2">
+                       
+                    </div>
+                    <div class="container py-3">
+                        <div class="bg-white p-3">
+                           
+                            
+                            <h2>1. Добавление заказа  </h2>
+                            <div class="route"> <div class="post"></div> /order/add</div>  
+                            <h4> ЗАПРОС </h4>
+                            <pre>
+                                {
+                                    tip: '',
+                                    typedFields: {}, 
+                                    id: '', 
+                                    created: '',  
+                                    status: '',
+                                    category: '',
+                                    name: '',
+                                    executionTime: '',
+                                    address: '',
+                                    addressDom: '', 
+                                    addressIntercom : '',
+                                    metroStation: '',
+                                    geo: '',
+                                    amount: '',
+                                    isGuarantee: false, 
+                                    isQuickly: false, 
+                                    isRecall: false, 
+                                    isProcessing: false, 
+                                    comment: '',  
+                                    model: '', 
+                                    defect: '', 
+                                    prepayment: '', 
+                                    isCashless: false, 
+                                    orderDepartment: '',
+                                    // после создания
+                                    isPrepayment: false, 
+                                    isLogistics: false,  
+                                    isCorporate: false,  
+                                    departureEngineer: '', 
+                                    courierTake: '', 
+                                    courierGive: '', 
+                                    courierGive: '', 
+                                    manager: '',  
+                                    abp: [], 
+                                    sms: [], 
+                                    additionalContact: [],
+                                    additionalExpenses: [],
+                                }
+                            </pre>
+                            <hr>
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                            <hr>
+                            
+                            
+                            <h2> 2. Получить доступные Типы заказа  </h2>
+                            <div class="route"> <div class="get"></div>/order/state</div>  
+                            <h4>ОТВЕТ</h4>
+                            
+                            <pre>
+                                ( тут fields - это уникальные поля для данного типа заказа,  
+                                categoryList, statusList - список категорий и статусов, уникальных для данного типа заказа )
+
+                                {
+                                    garbageRemoval: {
+                                        code: 'garbageRemoval',
+                                        title: 'Вывоз мусора', 
+                                        fields: {
+                                            value: '', 
+                                            distance: '', 
+                                            category: '', 
+                                            status: ''
+                                        }, 
+                                        categoryList: [
+                                            {value: 'container', title: 'Контейнер'}, 
+                                            {value: 'bak', title: 'Бак'}
+                                        ],
+                                        statusList: [ 
+                                            {value: 'new', title: 'Новая'}, 
+                                            {value: 'sorvana', title: 'Сорвана'},
+                                            {value: 'vrabote', title: 'В работе'},
+                                            {value: 'done', title: 'Выполнена'}
+                                        ]
+                                    },
+                                    visitingRepair: {
+                                        code: 'visitingRepair', 
+                                        title: 'Выездной ремонт',
+                                        fields: {
+                                            breaking: '', 
+                                            price: '', 
+                                            category: '', 
+                                            status: ''
+                                        },  
+                                        categoryList: [
+                                            {value: 'tv', title: 'Телевизор'}, 
+                                            {value: 'comp', title: 'Компьютер'},
+                                            {value: 'washing', title: 'Стиральная машина'},
+                                            {value: 'posuda', title: 'Посудомойка'},
+                                        ],
+                                        statusList: [ 
+                                            {value: 'new', title: 'Новая'}, 
+                                            {value: 'sorvana', title: 'Сорвана'},
+                                            {value: 'vrabote', title: 'В работе'},
+                                            {value: 'done', title: 'Выполнена'},
+                                            {value: 'success', title: 'Починили'},
+                                            {value: 'unsuccess', title: 'Не починили'}
+                                        ]
+                                    }, 
+                                    stationRepair: {
+                                        title: 'Стационарный ремонт',
+                                        code: 'stationRepair',  
+                                        fields: {
+                                            breaking: '', 
+                                            price: '', 
+                                            category: '', 
+                                            status: ''
+                                        }, 
+                                        categoryList: [
+                                            {value: 'tv', title: 'Телевизор'}, 
+                                            {value: 'comp', title: 'Компьютер'},
+                                            {value: 'washing', title: 'Стиральная машина'},
+                                            {value: 'posuda', title: 'Посудомойка'},
+                                        ],
+                                        statusList: [ 
+                                            {value: 'new', title: 'Новая'}, 
+                                            {value: 'sorvana', title: 'Сорвана'},
+                                            {value: 'vrabote', title: 'В работе'},
+                                            {value: 'done', title: 'Выполнена'},
+                                            {value: 'success', title: 'Починили'},
+                                            {value: 'unsuccess', title: 'Не починили'}
+                                        ]
+                                    }, 
+                                    transporting: {
+                                        title: 'Грузоперевозки', 
+                                        code: 'transporting',  
+                                        fields: {
+                                            distance: '', 
+                                            price: '', 
+                                            category: '', 
+                                            status: ''
+                                        }, 
+                                        categoryList: [
+                                            {value: 'fura', title: 'Фура'}, 
+                                            {value: 'gazel', title: 'Газель'},
+                                            {value: 'universal', title: 'Универсал'},
+                                            {value: 'sedan', title: 'Легковая'},
+                                        ],
+                                        statusList: [ 
+                                            {value: 'new', title: 'Новая'}, 
+                                            {value: 'sorvana', title: 'Сорвана'},
+                                            {value: 'vrabote', title: 'В работе'},
+                                            {value: 'done', title: 'Выполнена'}, 
+                                        ]
+                                    }, 
+                                }
+                            </pre> 
+                            <hr>
+ 
+                            <h2>3. Обновление заказа  </h2>
+                            <h2> ( для изменения любых полей, изменения комментария, изменения типа заказа, оплаты и тд. Может быть это стоит разделить, я не знаю. Я думаю тебе лучше знать)  </h2>
+                            <div class="route"> <div class="put"></div> /order/{id}</div>  
+                            <h4> ЗАПРОС </h4>
+                            <pre>
+                                {
+                                    tip: '',
+                                    typedFields: {}, 
+                                    id: '', 
+                                    created: '',  
+                                    status: '',
+                                    category: '',
+                                    name: '',
+                                    executionTime: '',
+                                    address: '',
+                                    addressDom: '', 
+                                    addressIntercom : '',
+                                    metroStation: '',
+                                    geo: '',
+                                    amount: '',
+                                    isGuarantee: false, 
+                                    isQuickly: false, 
+                                    isRecall: false, 
+                                    isProcessing: false, 
+                                    comment: '',  
+                                    model: '', 
+                                    defect: '', 
+                                    prepayment: '', 
+                                    isCashless: false, 
+                                    orderDepartment: '',
+                                    // после создания
+                                    isPrepayment: false, 
+                                    isLogistics: false,  
+                                    isCorporate: false,  
+                                    departureEngineer: '', 
+                                    courierTake: '', 
+                                    courierGive: '', 
+                                    courierGive: '', 
+                                    manager: '',  
+                                    abp: [], 
+                                    sms: [], 
+                                    additionalContact: [],
+                                    additionalExpenses: [],
+                                }
+                            </pre>
+                            <hr>
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                            <hr>
+
+                            
+                            <h2>3. Удаление заказа  </h2>
+                            <div class="route"> <div class="delete"></div> /order/{id}</div>  
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+
+                        </div>
+                    </div> 
                 </div> 
             </div> 
         </div>
