@@ -1452,14 +1452,9 @@
                                             isCorporate: false,  
                                             departureEngineer: '', 
                                             courierTake: '', 
-                                            courierGive: '', 
-                                            courierGive: '', 
+                                            courierGive: '',  
                                             manager: '', 
                                              
-                                            abp: [],  // акт работ
-                                            sms: [],  // история смс 
-                                            additionalContact: [], // доп телефоны
-                                            additionalExpenses: [], // доп расходы 
                                         }, ....
                                     ],
                                     "all":"общее количество сотрудников для пагинации"
@@ -1491,9 +1486,7 @@
                                 {
                                     tip: '',
                                     typedFields: {}, 
-                                    id: '', 
-                                    created: '',  
-                                    status: '',
+                                    id: '',  
                                     category: '',
                                     name: '',
                                     executionTime: '',
@@ -1519,13 +1512,8 @@
                                     isCorporate: false,  
                                     departureEngineer: '', 
                                     courierTake: '', 
-                                    courierGive: '', 
-                                    courierGive: '', 
-                                    manager: '',  
-                                    abp: [], 
-                                    sms: [], 
-                                    additionalContact: [],
-                                    additionalExpenses: [],
+                                    courierGive: '',  
+                                    manager: '',   
                                 }
                             </pre>
                             <hr>
@@ -1534,7 +1522,80 @@
                             <div class="route"> <div class="get"></div> /order/{id}/logs  </div>   
                             <hr> 
 
-                            <h2>  4. Копирование (Полное)   </h2>
+                            <h2> 3. Получение Акта выполненных работ   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/abp  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    data: [
+                                        {
+                                            name: '',
+                                            sn: {}, 
+                                            quantity: '',  
+                                            price: '',
+                                            gananty: '',   
+                                        },  ...
+                                    ]
+                                } 
+                            </pre>
+
+                            <hr> 
+
+                            <h2> 4. Получение Истории SMS   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/sms  </div>   
+                                <h4>Ответ</h4>
+                                <pre>
+                                    { 
+                                        order_id: 1,
+                                        messages: [
+                                            {
+                                                text: '',
+                                                data: {},   
+                                            }, ...
+                                        ]
+                                    }
+                                
+                                </pre>
+
+                            <hr> 
+                            <hr> 
+                            <h2> 5. Получение Дополнительных контактов   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/additionalContact  </div>   
+                            <h4>Ответ</h4>
+                                <pre>
+                                [
+                                    {
+                                        order_id: 1,
+                                        name: '', 
+                                        post: '', 
+                                        phone: '', 
+                                        email: ''
+                                    }
+                                ]
+                                </pre>
+  
+                            <hr> 
+                            <h2> 6. Получение Дополнительных расходов   </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/additionalExpenses  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    data: [
+                                        {
+                                            name: '',  
+                                            price: '',
+                                            name: '',   
+                                            date: '',   
+                                        },  ...
+                                    ]
+                                } 
+                            </pre>
+
+                            <hr>  
+
+                            <h2>  7. Копирование (Полное)   </h2>
                             <div class="route"> <div class="get"></div> /order/{id}/copy-full  </div>   
                             <h4>Ответ</h4>
                             <pre>
@@ -1560,7 +1621,7 @@
                             <hr> 
 
 
-                            <h2>  4. Копирование (Краткое)   </h2>
+                            <h2>  8. Копирование (Краткое)   </h2>
                             <div class="route"> <div class="get"></div> /order/{id}/copy-trim  </div>   
                             <h4>Ответ</h4>
                             <pre>
@@ -1574,7 +1635,7 @@
                             </pre> 
                             <hr> 
 
-                            <h2>  4. Копирование (Сводное)  </h2>
+                            <h2>  9. Копирование (Сводное)  </h2>
                             <div class="route"> <div class="get"></div> /order/{id}/copy-svod  </div>   
                             <h4>Ответ</h4>
                             <pre>
@@ -1610,9 +1671,7 @@
                                 {
                                     tip: '',
                                     typedFields: {}, 
-                                    id: '', 
-                                    created: '',  
-                                    status: '',
+                                    id: '',  
                                     category: '',
                                     name: '',
                                     executionTime: '',
@@ -1641,12 +1700,9 @@
                                     courierGive: '', 
                                     courierGive: '', 
                                     manager: '',  
-                                    abp: [], 
-                                    sms: [], 
-                                    additionalContact: [],
-                                    additionalExpenses: [],
                                 }
                             </pre>
+  
                             <hr>
                             <h4>ОТВЕТ</h4>
                             <pre>
@@ -1761,16 +1817,14 @@
                             <hr>
  
                             <h2>3. Обновление заказа  </h2>
-                            <h2> ( для изменения любых полей, изменения комментария, изменения типа заказа, оплаты и тд. Может быть это стоит разделить, я не знаю. Я думаю тебе лучше знать)  </h2>
+                            <h2> ( для изменения любых полей, изменения комментария, изменения типа заказа, оплаты и тд. )  </h2>
                             <div class="route"> <div class="put"></div> /order/{id}</div>  
                             <h4> ЗАПРОС </h4>
                             <pre>
                                 {
                                     tip: '',
                                     typedFields: {}, 
-                                    id: '', 
-                                    created: '',  
-                                    status: '',
+                                    id: '',  
                                     category: '',
                                     name: '',
                                     executionTime: '',
@@ -1798,11 +1852,7 @@
                                     courierTake: '', 
                                     courierGive: '', 
                                     courierGive: '', 
-                                    manager: '',  
-                                    abp: [], 
-                                    sms: [], 
-                                    additionalContact: [],
-                                    additionalExpenses: [],
+                                    manager: '',   
                                 }
                             </pre>
                             <hr>
@@ -1814,8 +1864,108 @@
                             </pre>
                             <hr>
 
+                            <h2>4. Обновление Акта работ  </h2> 
+                            <div class="route"> <div class="put"></div> /order/{id}/abp</div>  
+                            <h4>Запрос</h4>
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    data: [
+                                        {
+                                            name: '',
+                                            sn: '', 
+                                            quantity: '',  
+                                            price: '',
+                                            gananty: '',   
+                                        },  ...
+                                    ]
+                                } 
+                            </pre>
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                            <hr>  
                             
-                            <h2>3. Удаление заказа  </h2>
+                            <h2>5. Обновление SMS </h2> 
+                            <div class="route"> <div class="put"></div> /order/{id}/sms</div>  
+                            <h4>Запрос</h4> 
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    messages: [
+                                        {
+                                            text: '',
+                                            data: {},   
+                                        }, ...
+                                    ]
+                                }
+                            
+                            </pre>
+                            
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                            <hr>   
+
+                            <h2>6. Обновление контактов  </h2> 
+                            <div class="route"> <div class="put"></div> /order/{id}/additionalContact</div>  
+                            <h4>Запрос</h4> 
+                            <pre>
+                                [
+                                    {
+                                        order_id: 1,
+                                        name: '', 
+                                        post: '', 
+                                        phone: '', 
+                                        email: ''
+                                    }, 
+                                ]
+                            
+                            </pre>
+                            
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                            <hr> 
+                            
+                            
+                            <h2>7. Обновление доп расходов  </h2> 
+                            <div class="route"> <div class="put"></div> /order/{id}/additionalExpenses</div>  
+                            <h4>Запрос</h4> 
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    data: [
+                                        {
+                                            name: '',  
+                                            price: '',
+                                            name: '',   
+                                            date: '',   
+                                        },  ...
+                                    ]
+                                } 
+                            
+                            </pre>
+                            
+                            <h4>ОТВЕТ</h4>
+                            <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                            <hr>     
+
+                            
+                            <h2>8. Удаление заказа  </h2>
                             <div class="route"> <div class="delete"></div> /order/{id}</div>  
                             <h4>ОТВЕТ</h4>
                             <pre>
