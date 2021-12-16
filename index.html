@@ -1595,7 +1595,20 @@
 
                             <hr>  
 
-                            <h2>  7. Копирование (Полное)   </h2>
+
+                            <h2> 7. Получение изображений  </h2>
+                            <div class="route"> <div class="get"></div> /order/{id}/images  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    data: [ 'img1.jpg', 'img2.jpg', .. ],    
+                                } 
+                            </pre>
+
+                            <hr>  
+
+                            <h2>  8.1. Копирование (Полное)   </h2>
                             <div class="route"> <div class="get"></div> /order/{id}/copy-full  </div>   
                             <h4>Ответ</h4>
                             <pre>
@@ -1621,7 +1634,7 @@
                             <hr> 
 
 
-                            <h2>  8. Копирование (Краткое)   </h2>
+                            <h2>  8.2. Копирование (Краткое)   </h2>
                             <div class="route"> <div class="get"></div> /order/{id}/copy-trim  </div>   
                             <h4>Ответ</h4>
                             <pre>
@@ -1635,7 +1648,7 @@
                             </pre> 
                             <hr> 
 
-                            <h2>  9. Копирование (Сводное)  </h2>
+                            <h2>  8.3. Копирование (Сводное)  </h2>
                             <div class="route"> <div class="get"></div> /order/{id}/copy-svod  </div>   
                             <h4>Ответ</h4>
                             <pre>
@@ -1972,6 +1985,26 @@
                                 {
                                     200: ok
                                 }
+                            </pre>
+
+                            <h2> 9. Добавить изображения  </h2>
+                            <div class="route"> <div class="post"></div> /order/{id}/images  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    files: [ {}, {}, {} ],    
+                                } 
+                            </pre>
+
+                            <h2> 10. Удалть изображение  </h2>
+                            <div class="route"> <div class="delete"></div> /order/{id}/images  </div>   
+                            <h4>Ответ</h4>
+                            <pre>
+                                { 
+                                    order_id: 1,
+                                    img_id: '1',    
+                                } 
                             </pre>
 
                         </div>
