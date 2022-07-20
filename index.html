@@ -1,140 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="favicon.ico" />
     <title>api - frontend</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
     <style>
-        h1, h2, h3 { 
+        h1,
+        h2,
+        h3 {
             font-weight: 700;
         }
-        h3 { 
+
+        h3 {
             text-transform: uppercase;
             color: rgb(68, 68, 68);
             margin-top: 15px;
         }
+
         h2 {
             font-size: 18px;
         }
+
         h1 {
             font-size: 25px;
 
         }
+
         .route {
             font-weight: 900;
             color: rgb(55, 55, 55);
             margin: 10px 0;
         }
+
         .get {
             color: blue;
             display: inline-block;
         }
+
         .get::after {
             content: 'GET'
         }
-        .post { 
+
+        .post {
             color: rgb(57, 40, 165);
             display: inline-block;
         }
+
         .post::after {
             content: 'POST'
         }
+
         .put {
             color: rgb(75, 150, 0);
             display: inline-block;
         }
+
         .put::after {
             content: 'PUT'
         }
-        .delete { 
+
+        .delete {
             color: firebrick;
             display: inline-block;
-        } 
+        }
+
         .delete::after {
             content: 'DELETE'
         }
+
         .sticky-side {
             position: sticky;
             top: 0;
         }
+
         .t-100 {
-            top: calc(54px );
+            top: calc(54px);
         }
+
         .z-100 {
             z-index: 100;
         }
+
+        .container { 
+            max-width: 1440px !important;
+        }
     </style>
 </head>
-<body class="bg-light">
-    
-<div class="container-fluid bg-light py-3">
-    <nav class="navbar  navbar-light sticky-side z-100 ">  
-        <button class="js-toggle-button navbar-toggler border-0 px-0"  >
-            <span class="js-toggle-item d-none navbar-toggler-icon"></span>
-            <span class="js-toggle-item">
-                <svg height="30px"  viewBox="0 0 329.26933 329" width="30px" xmlns="http://www.w3.org/2000/svg"><path fill='rgba(255, 12, 12, 0.5)' d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0"/></svg>
-            </span>
-            
-        </button>
-    </nav>
 
-    
-    <div class="row"> 
-        <div class="col col-lg-2 js-toggle-target   ">
-            <!-- MENU -->
-            <ul class="nav sticky-side t-100 flex-column nav-pills js-tab"> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#users">Пользователи</a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#create">Создание пользователей </a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#update">Обновление пользователей </a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#pageuser">Страница пользователя</a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#sites">Список сайтов</a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#interview">Записи на интервью</a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#order-list">Список заказов <span class="badge badge-pill badge-danger">Новое</span></a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#order">Страница заказа <span class="badge badge-pill badge-danger">Новое</span></a>
-                </li> 
-                <li class="nav-item">
-                  <a class="nav-link " data-toggle="tab" href="#order-action">Действия с заказом <span class="badge badge-pill badge-danger">Новое</span></a>
-                </li> 
-            </ul>
-        </div>
-       
-        <!-- CONTENT -->
-        <div class="col ">
-            <div class="tab-content js-tab-content">
-                <!-- Первый блок (он отображается по умолчанию, т.к. имеет классы show и active) -->
-                <div class="tab-pane fade " id="users">
-                    
-                    <div class="container py-3 ">
-                        <div class="bg-white p-2">
-                            <!-- 1 -->
-                            <h2>1) Список пользователей: </h2>
-                            <h6>- получить список пользователей (staff, client(fiz, yur, individual), aspirant(pupils, founder))</h6>
-                    
-                            <div class="route">1. <div class="get"></div> /users/staff/{type}/{СТРАНИЦА}</div>
-                    
-                            <div class="title">(type - hr, admin, managers  и тд)</div>
-                        
-                            <h4>Ответ: </h4>
-                            <pre>
+<body class="bg-light">
+
+    <div class="container-fluid bg-light py-3">
+        <nav class="navbar  navbar-light sticky-side z-100 ">
+            <button class="js-toggle-button navbar-toggler border-0 px-0">
+                <span class="js-toggle-item d-none navbar-toggler-icon"></span>
+                <span class="js-toggle-item">
+                    <svg height="30px" viewBox="0 0 329.26933 329" width="30px" xmlns="http://www.w3.org/2000/svg">
+                        <path fill='rgba(255, 12, 12, 0.5)'
+                            d="m194.800781 164.769531 128.210938-128.214843c8.34375-8.339844 8.34375-21.824219 0-30.164063-8.339844-8.339844-21.824219-8.339844-30.164063 0l-128.214844 128.214844-128.210937-128.214844c-8.34375-8.339844-21.824219-8.339844-30.164063 0-8.34375 8.339844-8.34375 21.824219 0 30.164063l128.210938 128.214843-128.210938 128.214844c-8.34375 8.339844-8.34375 21.824219 0 30.164063 4.15625 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921875-2.089844 15.082031-6.25l128.210937-128.214844 128.214844 128.214844c4.160156 4.160156 9.621094 6.25 15.082032 6.25 5.460937 0 10.921874-2.089844 15.082031-6.25 8.34375-8.339844 8.34375-21.824219 0-30.164063zm0 0" />
+                    </svg>
+                </span>
+
+            </button>
+        </nav>
+
+
+        <div class="row">
+            <div class="col col-lg-2 js-toggle-target   ">
+                <!-- MENU -->
+                <ul class="nav sticky-side t-100 flex-column nav-pills js-tab">
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#users">Пользователи</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#create">Создание пользователей </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#update">Обновление пользователей </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#pageuser">Страница пользователя</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#sites">Список сайтов</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#interview">Записи на интервью</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#order-list">Список заказов </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#order">Страница заказа </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#order-action">Действия с заказом </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#templates-get">Получение шаблонов <span
+                                class="badge badge-pill badge-danger">Новое</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#templates">Шаблоны <span
+                                class="badge badge-pill badge-danger">Новое</span></a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CONTENT -->
+            <div class="col col-lg-10">
+                <div class="tab-content js-tab-content">
+                    <!-- Первый блок (он отображается по умолчанию, т.к. имеет классы show и active) -->
+                    <div class="tab-pane fade " id="users">
+
+                        <div class="container py-3 ">
+                            <div class="bg-white p-2">
+                                <!-- 1 -->
+                                <h2>1) Список пользователей: </h2>
+                                <h6>- получить список пользователей (staff, client(fiz, yur, individual),
+                                    aspirant(pupils, founder))</h6>
+
+                                <div class="route">1. <div class="get"></div> /users/staff/{type}/{СТРАНИЦА}</div>
+
+                                <div class="title">(type - hr, admin, managers и тд)</div>
+
+                                <h4>Ответ: </h4>
+                                <pre>
                                 {
                                     users: [
                                         {
@@ -178,11 +214,11 @@
                                     "all":"общее количество сотрудников для пагинации"
                                 }
                             </pre>
-                            <hr>
-                            <!-- 2 -->
-                            <div class="route">2. <div class="get"></div> /users/client/fiz/{СТРАНИЦА}</div> 
-                            <h4>Ответ: </h4>
-                            <pre>
+                                <hr>
+                                <!-- 2 -->
+                                <div class="route">2. <div class="get"></div> /users/client/fiz/{СТРАНИЦА}</div>
+                                <h4>Ответ: </h4>
+                                <pre>
                                 {
                                     users:
                                     [
@@ -202,12 +238,12 @@
                                     "all":"общее количество сотрудников для пагинации"
                                 }
                             </pre>
-        
-                            <hr>
-                            <!-- 3 -->
-                            <div class="route">3. <div class="get"></div> /users/client/individual/{СТРАНИЦА}</div>  
-                            <h4>Ответ: </h4>
-                            <pre>
+
+                                <hr>
+                                <!-- 3 -->
+                                <div class="route">3. <div class="get"></div> /users/client/individual/{СТРАНИЦА}</div>
+                                <h4>Ответ: </h4>
+                                <pre>
                                 {
                                     users:
                                     [
@@ -236,12 +272,13 @@
                                     "all":"общее количество сотрудников для пагинации"
                                 }
                             </pre>
-        
-                            <hr>
-                            <!-- 4 --> 
-                            <div class="route">4. <div class="get"></div> /users/client/yur/{СТРАНИЦА} - получить список всех yur-ов по странице </div>   
-                            <h4>Ответ: </h4>
-                            <pre> 
+
+                                <hr>
+                                <!-- 4 -->
+                                <div class="route">4. <div class="get"></div> /users/client/yur/{СТРАНИЦА} - получить
+                                    список всех yur-ов по странице </div>
+                                <h4>Ответ: </h4>
+                                <pre>
                                     {
                                         users:
                                         [
@@ -269,11 +306,13 @@
                                         "all":"общее количество сотрудников для пагинации"
                                     }
                             </pre>
-        
-                            <hr>
 
-                            <h2>5. Соискатели - ученик</h2>
-                                <div class="route"> <div class="get"></div> /users/aspirant/pupils{СТРАНИЦА} </div> 
+                                <hr>
+
+                                <h2>5. Соискатели - ученик</h2>
+                                <div class="route">
+                                    <div class="get"></div> /users/aspirant/pupils{СТРАНИЦА}
+                                </div>
                                 <h4>Ответ: </h4>
                                 <pre>
                                     {
@@ -300,14 +339,16 @@
                                         "all":"общее количество сотрудников для пагинации"
                                     }
                                 </pre>
-                                 
+
                                 <hr>
-                    
+
                                 <!-- 6 -->
                                 <h2>6. Соискатели - соискатели</h2>
-                                <div class="route"> <div class="get"></div> /users/aspirant/founder{СТР} </div> 
+                                <div class="route">
+                                    <div class="get"></div> /users/aspirant/founder{СТР}
+                                </div>
                                 <h4>Ответ: </h4>
-                                <pre>             
+                                <pre>
                                     {
                                         users:
                                         [
@@ -326,91 +367,101 @@
                                         ],
                                         "all":"общее количество сотрудников для пагинации"
                                     }
-                                </pre> 
+                                </pre>
                                 <hr>
 
-                                
-                            <!-- 5 -->
-                            <h2>7. Удалить одного пользователя </h2> 
-                            <div class="route"> <div class="delete"></div> /user/{id} </div>   
-                            <h4>Ответ: </h4>
-                            <pre>
+
+                                <!-- 5 -->
+                                <h2>7. Удалить одного пользователя </h2>
+                                <div class="route">
+                                    <div class="delete"></div> /user/{id}
+                                </div>
+                                <h4>Ответ: </h4>
+                                <pre>
                                 {
                                     200: Успешно удалено
                                 }
                             </pre>
-        
-                            <hr>
-        
-                            <!-- 6 -->
-                            <h2>8. Удалить массив пользователей </h2> 
-                            <div class="route"> <div class="delete"></div> /users/delete </div>   
-                            <h4>Запрос: </h4>
-                            <pre>
+
+                                <hr>
+
+                                <!-- 6 -->
+                                <h2>8. Удалить массив пользователей </h2>
+                                <div class="route">
+                                    <div class="delete"></div> /users/delete
+                                </div>
+                                <h4>Запрос: </h4>
+                                <pre>
                                 {
                                     deleted: [
                                         id, id, id ...
                                     ]
                                 } 
                             </pre>
-                            <h4> Ответ: </h4>
-                            <pre>
+                                <h4> Ответ: </h4>
+                                <pre>
                                 {
                                     200: Успешно удалено
                                 }
                             </pre>
-                            <hr>
-        
-                            <!-- 7 -->
-                            <h2>9. Switch одного пользователя</h2>
-                            <div class="route"> <div class="put"></div> /user/switch/{id}</div>   
-                            <h4> Ответ: </h4>
-                            <pre>
+                                <hr>
+
+                                <!-- 7 -->
+                                <h2>9. Switch одного пользователя</h2>
+                                <div class="route">
+                                    <div class="put"></div> /user/switch/{id}
+                                </div>
+                                <h4> Ответ: </h4>
+                                <pre>
                                 {
                                     200: Успешно удалено
                                 }
                             </pre>
-                            <hr>
-        
-                            <!-- 8 -->
-                            <h2>
-                                10. Switch много пользователей
-                            </h2>
-                            <div class="route"> <div class="put"></div> /user/switch-many </div>   
-                            <h4>Запрос:</h4>
-                            <pre>
+                                <hr>
+
+                                <!-- 8 -->
+                                <h2>
+                                    10. Switch много пользователей
+                                </h2>
+                                <div class="route">
+                                    <div class="put"></div> /user/switch-many
+                                </div>
+                                <h4>Запрос:</h4>
+                                <pre>
                                 {
                                     switched: [
                                         id, id, id ...
                                     ]
                                 }
                             </pre>
-        
-                            <hr> 
-        
-        
+
+                                <hr>
+
+
+                            </div>
+
                         </div>
-                        
+
                     </div>
-        
-                </div>
-                <!-- Второй блок -->
-                <div class="tab-pane fade" id="create">
-                    <div class="container py-2 ">
-                        <h1>Создание пользователей </h1>
-                    </div>
-                    <div class="container py-3 ">
-                        <div class="bg-white p-2">
-                    <!-- 1 -->
-                    
-        
-                    <h2>1. Сотрудники </h2> 
-            
-                    <div class="route"> <div class="post"></div> /staff</div> 
-                
-                    <h4>Запрос: </h4>
-        
-                    <pre>
+                    <!-- Второй блок -->
+                    <div class="tab-pane fade" id="create">
+                        <div class="container py-2 ">
+                            <h1>Создание пользователей </h1>
+                        </div>
+                        <div class="container py-3 ">
+                            <div class="bg-white p-2">
+                                <!-- 1 -->
+
+
+                                <h2>1. Сотрудники </h2>
+
+                                <div class="route">
+                                    <div class="post"></div> /staff
+                                </div>
+
+                                <h4>Запрос: </h4>
+
+                                <pre>
                         {
                             userDetails: {
                                 id: id, 
@@ -456,22 +507,24 @@
                             }
                         }
                     </pre>
-        
-                    <h4>Ответ</h4>
-                    <pre>
+
+                                <h4>Ответ</h4>
+                                <pre>
                         {
                             200: Успешно создан
                         }
                     </pre>
-        
-                    <hr>
-        
-                    <!-- 2 -->
-        
-                    <h2>2. Клиент - физ лицо</h2>
-                    <div class="route"> <div class="post"></div> /client/fiz </div> 
-                    <h4>Запрос: </h4>
-                    <pre>
+
+                                <hr>
+
+                                <!-- 2 -->
+
+                                <h2>2. Клиент - физ лицо</h2>
+                                <div class="route">
+                                    <div class="post"></div> /client/fiz
+                                </div>
+                                <h4>Запрос: </h4>
+                                <pre>
                         {
                             userDetails: {
                                 id: id, 
@@ -497,20 +550,22 @@
                             ]
                         }
                     </pre>
-                    <h4>Ответ</h4>
-                    <pre>
+                                <h4>Ответ</h4>
+                                <pre>
                         {
                             200: Успешно создан
                         }
                     </pre>
-        
-                    <hr>
-        
-                    <!-- 3 -->
-                    <h2> 3. Клиент - юр лицо</h2>
-                    <div class="route"> <div class="post"></div> /client/yur </div> 
-                    <h4>Запрос: </h4>
-                    <pre>
+
+                                <hr>
+
+                                <!-- 3 -->
+                                <h2> 3. Клиент - юр лицо</h2>
+                                <div class="route">
+                                    <div class="post"></div> /client/yur
+                                </div>
+                                <h4>Запрос: </h4>
+                                <pre>
                         {
                             userDetails: {
                                 id: id, 
@@ -544,20 +599,22 @@
                             ]
                         }
                     </pre>
-                    <h4>Ответ</h4>
-                    <pre>
+                                <h4>Ответ</h4>
+                                <pre>
                         {
                             200: Успешно создан
                         }
                     </pre>
-                    <hr>
-        
-                    <!-- 4 -->
-        
-                    <h2>4. Клиент - Индивидуальный предприниматель</h2>
-                    <div class="route"> <div class="post"></div> /client/individual </div> 
-                    <h4>Запрос: </h4>
-                    <pre>                    
+                                <hr>
+
+                                <!-- 4 -->
+
+                                <h2>4. Клиент - Индивидуальный предприниматель</h2>
+                                <div class="route">
+                                    <div class="post"></div> /client/individual
+                                </div>
+                                <h4>Запрос: </h4>
+                                <pre>
                             {
                                 userDetails: {
                                     id: id,   
@@ -592,19 +649,21 @@
                                 ]
                             } 
                     </pre>
-                    <h4>Ответ</h4>
-                    <pre>
+                                <h4>Ответ</h4>
+                                <pre>
                         {
                             200: Успешно создан
                         }
                     </pre>
-                    <hr>
-        
-                    <!-- 5 -->
-                    <h2>5. Соискатели - ученик</h2>
-                    <div class="route"> <div class="post"></div> /aspirant/pupils </div> 
-                    <h4>Запрос: </h4>
-                    <pre>
+                                <hr>
+
+                                <!-- 5 -->
+                                <h2>5. Соискатели - ученик</h2>
+                                <div class="route">
+                                    <div class="post"></div> /aspirant/pupils
+                                </div>
+                                <h4>Запрос: </h4>
+                                <pre>
                         {
                             userDetails: {
                                 id: id, 
@@ -631,19 +690,21 @@
                             }
                         }  
                     </pre>
-                    <h4>Ответ</h4>
-                    <pre>
+                                <h4>Ответ</h4>
+                                <pre>
                         {
                             200: Успешно создан
                         }
                     </pre>
-                    <hr>
-        
-                    <!-- 6 -->
-                    <h2>6. Соискатели - соискатели</h2>
-                    <div class="route"> <div class="post"></div> /aspirant/founder </div> 
-                    <h4>Запрос: </h4>
-                    <pre>         
+                                <hr>
+
+                                <!-- 6 -->
+                                <h2>6. Соискатели - соискатели</h2>
+                                <div class="route">
+                                    <div class="post"></div> /aspirant/founder
+                                </div>
+                                <h4>Запрос: </h4>
+                                <pre>
                         {
                             userDetails: {
                                 id: id,  
@@ -665,73 +726,101 @@
                             }
                         }  
                     </pre>
-                    <h4>Ответ</h4>
-                    <pre>
+                                <h4>Ответ</h4>
+                                <pre>
                         {
                             200: Успешно создан
                         }
                     </pre>
-                    <hr>
-        
-        
-        
-        
-                        </div> 
-                    </div> 
-                </div> 
-                <div class="tab-pane fade" id="update">  
-                    <div class="container py-3">
-                        <div class="bg-white p-3">
-        
-                            <h2> Обновление пользователя</h2>
-                            
-                            <h4>Обновление Деталей пользователя</h4>
-                            <h6>(запрос повторяется как в создании пользователя (userDetails) )</h6>
-                            <div class="route"> <div class="put"></div>  /staff/details/{id пользователя} </div>  
-                            <div class="route"> <div class="put"></div>  /client/fiz/details/{id пользователя} </div>  
-                            <div class="route"> <div class="put"></div>  /client/yur/details/{id пользователя} </div>  
-                            <div class="route"> <div class="put"></div>  /client/individual/details/{id пользователя} </div>   
-                            <div class="route"> <div class="put"></div>  /aspirant/pupils/details/{id пользователя} </div>   
-                            <div class="route"> <div class="put"></div>  /aspirant/founder/details/{id пользователя} </div>    
-                            
-                            <hr>
+                                <hr>
 
-                            <h4>Обновление Дополнительные Данные</h4>
-                            <h6>(запрос повторяется как в создании пользователя (privateData) )</h6>
-                            <div class="route"> <div class="put"></div>  /staff/private/{id пользователя} </div>  
-                            <div class="route"> <div class="put"></div>  /client/fiz/private/{id пользователя} </div>  
-                            <div class="route"> <div class="put"></div>  /client/yur/private/{id пользователя} </div>  
-                            <div class="route"> <div class="put"></div>  /client/individual/private/{id пользователя} </div>   
-                            <div class="route"> <div class="put"></div>  /aspirant/pupils/private/{id пользователя} </div>   
-                            <div class="route"> <div class="put"></div>  /aspirant/founder/private/{id пользователя} </div>   
 
-                            <hr>
 
-                            <h4>Обновление Дополнительных контактов</h4>
-                            <h6>(запрос повторяется как в создании пользователя (additionalContact) )</h6>
-                            <div class="route"> <div class="put"></div>  /{user type}/contact/{id контакта} </div>     
+
+                            </div>
                         </div>
                     </div>
-                </div> 
-                <div class="tab-pane fade" id="pageuser">  
-                    <div class="container py-2">
-                        <h1>Страница пользователя:</h1>
-                        <h5>Получение данных для странички пользователя</h5>
+                    <div class="tab-pane fade" id="update">
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+                                <h2> Обновление пользователя</h2>
+
+                                <h4>Обновление Деталей пользователя</h4>
+                                <h6>(запрос повторяется как в создании пользователя (userDetails) )</h6>
+                                <div class="route">
+                                    <div class="put"></div> /staff/details/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /client/fiz/details/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /client/yur/details/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /client/individual/details/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /aspirant/pupils/details/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /aspirant/founder/details/{id пользователя}
+                                </div>
+
+                                <hr>
+
+                                <h4>Обновление Дополнительные Данные</h4>
+                                <h6>(запрос повторяется как в создании пользователя (privateData) )</h6>
+                                <div class="route">
+                                    <div class="put"></div> /staff/private/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /client/fiz/private/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /client/yur/private/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /client/individual/private/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /aspirant/pupils/private/{id пользователя}
+                                </div>
+                                <div class="route">
+                                    <div class="put"></div> /aspirant/founder/private/{id пользователя}
+                                </div>
+
+                                <hr>
+
+                                <h4>Обновление Дополнительных контактов</h4>
+                                <h6>(запрос повторяется как в создании пользователя (additionalContact) )</h6>
+                                <div class="route">
+                                    <div class="put"></div> /{user type}/contact/{id контакта}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="container py-3">
-                        <div class="bg-white p-3">
-        
-        
-        
-                            <!-- 1 --> 
-        
-                            <h2>1. КЛИЕНТЫ </h2> 
-        
-                            <div class="route"> <div class="get"></div> /user/staff/{id}/details</div> 
-        
-                            
-                            <h4>Ответ</h4>
-                            <pre>
+                    <div class="tab-pane fade" id="pageuser">
+                        <div class="container py-2">
+                            <h1>Страница пользователя:</h1>
+                            <h5>Получение данных для странички пользователя</h5>
+                        </div>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+
+
+                                <!-- 1 -->
+
+                                <h2>1. КЛИЕНТЫ </h2>
+
+                                <div class="route">
+                                    <div class="get"></div> /user/staff/{id}/details
+                                </div>
+
+
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     id: id, 
                                     status: true,
@@ -758,13 +847,13 @@
                                     deposit: '',
                                 }
                             </pre>
-        
-                            <hr>
-                            
-                            <!-- 2 -->
-                            <div class="route"> 2. <div class="get"></div> /user/staff/{id}/private</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+                                <!-- 2 -->
+                                <div class="route"> 2. <div class="get"></div> /user/staff/{id}/private</div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     isAccess: true
                                     data: { 
@@ -776,13 +865,13 @@
                                     }
                                 }
                             </pre>
-        
-                            <hr>
-        
-                            <!-- 3 -->
-                            <div class="route"> 3. <div class="get"></div> /user/staff/{id}/contacts</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+                                <!-- 3 -->
+                                <div class="route"> 3. <div class="get"></div> /user/staff/{id}/contacts</div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 [
                                     {
                                         user_id: 1,
@@ -794,15 +883,15 @@
                                     },
                                 ]
                             </pre>
-        
-                            <hr>
-        
-                            <!-- 4 -->
-                            <div class="route"> 4. <div class="get"></div> /user/staff/{id}/login  </div> 
-                            <div class="route"> 4.1 <div class="get"></div> /user/client/{id}/login  </div> 
-                            <div class="route"> 4.2 <div class="get"></div> /user/aspirant/{id}/login  </div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+                                <!-- 4 -->
+                                <div class="route"> 4. <div class="get"></div> /user/staff/{id}/login </div>
+                                <div class="route"> 4.1 <div class="get"></div> /user/client/{id}/login </div>
+                                <div class="route"> 4.2 <div class="get"></div> /user/aspirant/{id}/login </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     isAccess: true
                                     data: { 
@@ -812,24 +901,24 @@
                                     }
                                 }, 
                             </pre>
-        
-                            <hr>
-        
-                            <!-- 5 -->
-                            
-                            <div class="route"> 5. <div class="get"></div>/user/staff/{id}/logs   </div> 
-                            Ответ: ??
-         
-        
+
+                                <hr>
+
+                                <!-- 5 -->
+
+                                <div class="route"> 5. <div class="get"></div>/user/staff/{id}/logs </div>
+                                Ответ: ??
+
+
                             </div>
                             <div class="container bg-white my-5 py-3">
-                            <h2>
-                                СОИСКАТЕЛИ 
-                            </h2>
-        
-                            <div class="route"> 6. <div class="get"></div> /user/aspirant/pupils/{id}/details </div> 
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2>
+                                    СОИСКАТЕЛИ
+                                </h2>
+
+                                <div class="route"> 6. <div class="get"></div> /user/aspirant/pupils/{id}/details </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     id: id, 
                                     status: true,
@@ -848,12 +937,13 @@
                                     saleDetails: ''  
                                 }, 
                             </pre>
-                            
-                            <hr>
-        
-                            <div class="route"> 6.1. <div class="get"></div> /user/aspirant/founder/{id}/details </div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+                                <div class="route"> 6.1. <div class="get"></div> /user/aspirant/founder/{id}/details
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {  
                                     id: id,  
                                     status: true,
@@ -867,13 +957,13 @@
                                     adv: ''  
                                 }, 
                             </pre>
-                            
-                            <hr>
-        
-        
-                            <div class="route"> 7. <div class="get"></div> /user/aspirant/{id}/private </div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+
+                                <div class="route"> 7. <div class="get"></div> /user/aspirant/{id}/private </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     isAccess: true
                                     data: { 
@@ -883,13 +973,13 @@
                                     }
                                 }
                             </pre>
-                            
-                            <hr>
-        
-                            <div class="route"> 8. <div class="get"></div>  /user/aspirant/{id}/contacts</div> 
-                            <div class="route"> 8.1. <div class="get"></div>  /user/client/{id}/contacts</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+                                <div class="route"> 8. <div class="get"></div> /user/aspirant/{id}/contacts</div>
+                                <div class="route"> 8.1. <div class="get"></div> /user/client/{id}/contacts</div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 [
                                     {
                                         user_id: 1,
@@ -901,17 +991,17 @@
                                     },
                                 ]
                             </pre>
-                             
-        
+
+
                             </div>
                             <div class="container bg-white my-5 py-3">
-                            <h2>
-                                КЛИЕНТЫ
-                            </h2>
-        
-                            <div class="route"> 9. <div class="get"></div> /user/client/fiz/{id}/details</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2>
+                                    КЛИЕНТЫ
+                                </h2>
+
+                                <div class="route"> 9. <div class="get"></div> /user/client/fiz/{id}/details</div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     id: id, 
                                     status: true,
@@ -925,13 +1015,13 @@
                                     adress: '',
                                 } 
                             </pre>
-                            
-                            <hr>
-        
-                            
-                            <div class="route"> 9.1. <div class="get"></div> /user/client/yur/{id}/details</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+
+                                <div class="route"> 9.1. <div class="get"></div> /user/client/yur/{id}/details</div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     id: id, 
                                     status: true,
@@ -953,12 +1043,13 @@
                                     email: '',
                                 }
                             </pre>
-                            
-                            <hr>
-        
-                            <div class="route"> 9.2. <div class="get"></div> /user/client/individual/{id}/details</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+                                <div class="route"> 9.2. <div class="get"></div> /user/client/individual/{id}/details
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     id: id,   
                                     status: true,
@@ -981,44 +1072,50 @@
                                     email: '',  
                                 }
                             </pre>
-                            
-                            <hr>
-        
-                            <h2> 
-                                Пересохранение и удаление данных для странички пользователя    
-                            </h2>
-                            <p>
-                                ( тоже что и получение, только Запросы PUT )
-                            </p>
-                            <h4>Например</h4>
-                            <div class="route"> <div class="put"></div> /user/staff/{id}/contacts/{contact_id}</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+
+                                <h2>
+                                    Пересохранение и удаление данных для странички пользователя
+                                </h2>
+                                <p>
+                                    ( тоже что и получение, только Запросы PUT )
+                                </p>
+                                <h4>Например</h4>
+                                <div class="route">
+                                    <div class="put"></div> /user/staff/{id}/contacts/{contact_id}
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 200: Сохранено
                             </pre>
 
-                            <div class="route">  <div class="delete"></div> /user/staff/{id}/contacts/{contact_id}</div> 
-                            <h4>Ответ</h4>
-                            <pre>
+                                <div class="route">
+                                    <div class="delete"></div> /user/staff/{id}/contacts/{contact_id}
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 200: Удалено
                             </pre>
+                            </div>
                         </div>
                     </div>
-                </div> 
-                <div class="tab-pane fade" id="sites">
-                    <div class="container py-2">
-                        <h1>
-                            Список сайтов
-                        </h1>
-                    </div>
-                    <div class="container py-3">
-                        <div class="bg-white p-3">
-                           
-        
-                            <h2>1. Получить все сайты </h2>
-                            <div class="route"> <div class="get"></div>/site-list </div>  
-                            <h4>Ответ</h4>
-                            <pre>
+                    <div class="tab-pane fade" id="sites">
+                        <div class="container py-2">
+                            <h1>
+                                Список сайтов
+                            </h1>
+                        </div>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+
+                                <h2>1. Получить все сайты </h2>
+                                <div class="route">
+                                    <div class="get"></div>/site-list
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     sites:  [
                                          {
@@ -1041,12 +1138,14 @@
                                      allpage: totalpages
                                 }
                             </pre>
-                            <hr>
-        
-                            <h2>2. Обновить сайт  </h2>
-                            <div class="route"> <div class="put"></div> /site-list/{site_id} </div>  
-                            <h4>Запрос</h4>
-                            <pre>
+                                <hr>
+
+                                <h2>2. Обновить сайт </h2>
+                                <div class="route">
+                                    <div class="put"></div> /site-list/{site_id}
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 { 
                                     id: 1, 
                                     name: "Сервисный центра ЮАО",
@@ -1064,13 +1163,15 @@
                                     twogis: 'https://2gis',    
                                 }
                             </pre>
-                            <hr>
-        
-        
-                            <h2>3. Создать один сайт  </h2>
-                            <div class="route"> <div class="post"></div> /site-list/add  </div>  
-                            <h4>Запрос</h4>
-                            <pre>
+                                <hr>
+
+
+                                <h2>3. Создать один сайт </h2>
+                                <div class="route">
+                                    <div class="post"></div> /site-list/add
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 { 
                                     id: 1, 
                                     name: "",
@@ -1088,13 +1189,15 @@
                                     twogis: '',    
                                 }
                             </pre>
-                            <hr>
-        
-        
-                            <h2>4. Создать сразу много сайтов </h2>
-                            <div class="route"> <div class="post"></div> /site-list/add-many </div>  
-                            <h4>Запрос</h4>
-                            <pre>
+                                <hr>
+
+
+                                <h2>4. Создать сразу много сайтов </h2>
+                                <div class="route">
+                                    <div class="post"></div> /site-list/add-many
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 [
                                     { 
                                         id: 1, 
@@ -1130,43 +1233,49 @@
                                     }....
                                 ]
                             </pre>
-                            <hr>
-        
-                            <h2>5.  Удалить сайт</h2>
-                            <div class="route"> <div class="delete"></div> /site-list/{id}  </div>  
-                             
-                            <hr>
-        
-                            <h2>6. Удалить несколько сайтов </h2>
-                            <div class="route"> <div class="delete"></div> /site-list/delete-many  </div>  
-                            <h4>Запрос</h4>
-                            <pre> 
+                                <hr>
+
+                                <h2>5. Удалить сайт</h2>
+                                <div class="route">
+                                    <div class="delete"></div> /site-list/{id}
+                                </div>
+
+                                <hr>
+
+                                <h2>6. Удалить несколько сайтов </h2>
+                                <div class="route">
+                                    <div class="delete"></div> /site-list/delete-many
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 {
                                     deleted: [
                                         id, id, id... 
                                     ]
                                 } 
                             </pre>
-                            <hr>
-        
-        
+                                <hr>
+
+
+                            </div>
                         </div>
                     </div>
-                </div> 
-                <div class="tab-pane fade  " id="interview">
-                    <div class="container py-2">
-                        <h1>
-                            Запись на интервью 
-                        </h1>
-                    </div>
-                    <div class="container py-3">
-                        <div class="bg-white p-3">
-                           
-        
-                            <h2>1. Список всех записей на интервью  </h2>
-                            <div class="route"> <div class="get"></div> /interview-base/{СТРАНИЦА}</div>  
-                            <h4> ЗАПРОС (данные из фильтров)</h4>
-                            <pre>
+                    <div class="tab-pane fade  " id="interview">
+                        <div class="container py-2">
+                            <h1>
+                                Запись на интервью
+                            </h1>
+                        </div>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+
+                                <h2>1. Список всех записей на интервью </h2>
+                                <div class="route">
+                                    <div class="get"></div> /interview-base/{СТРАНИЦА}
+                                </div>
+                                <h4> ЗАПРОС (данные из фильтров)</h4>
+                                <pre>
                                 {
                                     dataFrom: "",  // дата от
                                     dataTo: "", // дата до
@@ -1175,9 +1284,9 @@
                                     search: "" // поисковая строка
                                 }
                             </pre>
-                            <hr>
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     interviews: [
                                         {
@@ -1197,13 +1306,15 @@
                                     "all":"общее количество сотрудников для пагинации"
                                 }
                             </pre>
-                            <hr>
+                                <hr>
 
 
-                            <h2> 2. Получить вакансии  </h2>
-                            <div class="route"> <div class="get"></div>/ interviews/vacancies</div>  
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+                                <h2> 2. Получить вакансии </h2>
+                                <div class="route">
+                                    <div class="get"></div>/ interviews/vacancies
+                                </div>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     hr: {
                                         title: 'HR', 
@@ -1226,13 +1337,15 @@
                                         code: 'masters'
                                     },
                                 }
-                            </pre> 
-                            <hr>
+                            </pre>
+                                <hr>
 
-                            <h2> 3. Получить статусы  </h2>
-                            <div class="route"> <div class="get"></div>/ interviews/statuses</div>  
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+                                <h2> 3. Получить статусы </h2>
+                                <div class="route">
+                                    <div class="get"></div>/ interviews/statuses
+                                </div>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 { 
                                     invite: {
                                         title: 'Приглашен', 
@@ -1247,14 +1360,16 @@
                                         code: 'neprishel'
                                     },
                                 }
-                            </pre> 
-                            <hr>
+                            </pre>
+                                <hr>
 
-                            <h2>4. Получить пользователей для создания интервью </h2>
-                            <div class="route"> <div class="get"></div>/interviews/users/{имя}</div>  
-                            <h5>(хотелось бы апи как с получением адресса )</h5>
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+                                <h2>4. Получить пользователей для создания интервью </h2>
+                                <div class="route">
+                                    <div class="get"></div>/interviews/users/{имя}
+                                </div>
+                                <h5>(хотелось бы апи как с получением адресса )</h5>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 { 
                                     users: [
                                         {
@@ -1269,13 +1384,15 @@
                                     ],
                                     "all":"общее количество сотрудников для пагинации"
                                 }
-                            </pre> 
-                            <hr>
+                            </pre>
+                                <hr>
 
-                            <h2> 5. Создать интервью </h2>
-                            <div class="route"> <div class="post"></div> /interview-create </div>   
-                            <h4>ЗАПРОС</h4>
-                            <pre>
+                                <h2> 5. Создать интервью </h2>
+                                <div class="route">
+                                    <div class="post"></div> /interview-create
+                                </div>
+                                <h4>ЗАПРОС</h4>
+                                <pre>
                                 {
                                     id: '', 
                                     created: '',  
@@ -1289,20 +1406,22 @@
                                     adv: '',
                                     comment: '', 
                                 } 
-                            </pre> 
-                            <h4>Ответ</h4>
-                            <pre>
+                            </pre>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     200: Пользователь создан
                                 }
-                            </pre> 
-                            <hr>
+                            </pre>
+                                <hr>
 
 
-                            <h2>  7. Получение одного интервью   </h2>
-                            <div class="route"> <div class="get"></div> /interview/{id}  </div>  
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 7. Получение одного интервью </h2>
+                                <div class="route">
+                                    <div class="get"></div> /interview/{id}
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     id: '', 
                                     created: '',  
@@ -1317,43 +1436,49 @@
                                     comment: '', 
                                 }
                             </pre>
-                            <hr>
+                                <hr>
 
 
-                            <h2>  8. Обновить комментарий одного интервью   </h2>
-                            <div class="route"> <div class="put"></div> /interview/comment  </div>  
-                            <h4>Запрос</h4>
-                            <pre>
+                                <h2> 8. Обновить комментарий одного интервью </h2>
+                                <div class="route">
+                                    <div class="put"></div> /interview/comment
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 {
                                     id: '',  
                                     comment: '', 
                                 }
                             </pre>
-                            <h4>Ответ: </h4>
-                            <pre>
+                                <h4>Ответ: </h4>
+                                <pre>
                                 {
                                     200: Успешно 
                                 }
                             </pre>
-                            <hr>
+                                <hr>
 
 
-                            <h2> 9. Удалить интервью </h2>
-                            <div class="route"> <div class="delete"></div> /interview/{id}  </div>  
-                             
-                            <h4>Ответ: </h4>
-                            <pre>
+                                <h2> 9. Удалить интервью </h2>
+                                <div class="route">
+                                    <div class="delete"></div> /interview/{id}
+                                </div>
+
+                                <h4>Ответ: </h4>
+                                <pre>
                                 {
                                     200: Успешно 
                                 }
                             </pre>
-                            <hr>
+                                <hr>
 
-                            <h2>  10. Обновить интервью  </h2>
-                            <div class="route"> <div class="put"></div> /interview/{id}  </div>  
-                             
-                            <h4>Запрос: </h4>
-                            <pre>
+                                <h2> 10. Обновить интервью </h2>
+                                <div class="route">
+                                    <div class="put"></div> /interview/{id}
+                                </div>
+
+                                <h4>Запрос: </h4>
+                                <pre>
                                 {
                                     id: '', 
                                     created: '',  
@@ -1368,46 +1493,48 @@
                                     comment: '', 
                                 }
                             </pre>
-                            <h4>Ответ: </h4>
-                            <pre>
+                                <h4>Ответ: </h4>
+                                <pre>
                                 {
                                     200: Успешно 
                                 }
                             </pre>
-                            <hr>
+                                <hr>
 
 
 
+                            </div>
+                        </div>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+
+
+                            </div>
                         </div>
                     </div>
-                    <div class="container py-3">
-                        <div class="bg-white p-3"> 
-                                         
-                                     
-                                   
+
+                    <!-- заказы -->
+                    <div class="tab-pane fade  " id="order-list">
+                        <div class="container py-2">
+                            <h1>
+                                Список заказов
+                            </h1>
                         </div>
-                    </div>
-                </div> 
-
-                <!-- заказы -->
-                <div class="tab-pane fade  " id="order-list">
-                    <div class="container py-2">
-                        <h1>
-                            Список заказов 
-                        </h1>
-                    </div>
-                    <div class="container py-3">
-                        <div class="bg-white p-3">
-                            
-                           
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
 
 
-                            <h2> 1. Список всех доступных заказов для менеджера </h2>
-                            <h2> 2. Список заказов доступных у назначенного мастера </h2>
-                            <h2> 3. Список курьера </h2>
-                            <div class="route"> <div class="get"></div> /orders/{СТРАНИЦА}</div>  
-                            <h4> ЗАПРОС ( данные из фильтров + id пользователя который делает запрос )</h4>
-                            <pre>
+
+
+                                <h2> 1. Список всех доступных заказов для менеджера </h2>
+                                <h2> 2. Список заказов доступных у назначенного мастера </h2>
+                                <h2> 3. Список курьера </h2>
+                                <div class="route">
+                                    <div class="get"></div> /orders/{СТРАНИЦА}
+                                </div>
+                                <h4> ЗАПРОС ( данные из фильтров + id пользователя который делает запрос )</h4>
+                                <pre>
                                 {   
                                     user_id: 'managerId1', // как-то передавать, что бы получать только доступные заказы 
                                     dataFrom: "",  // дата от
@@ -1417,9 +1544,9 @@
                                     search: "" // поисковая строка
                                 }
                             </pre>
-                            <hr>
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     orders: [
                                         {
@@ -1460,29 +1587,31 @@
                                     "all":"общее количество сотрудников для пагинации"
                                 }
                             </pre>
-                            <hr>
- 
+                                <hr>
 
 
+
+                            </div>
                         </div>
-                    </div> 
-                </div> 
-                <div class="tab-pane fade  " id="order">
-                    <div class="container py-2">
-                        <h1>
-                            Страница заказа
-                        </h1>
                     </div>
+                    <div class="tab-pane fade  " id="order">
+                        <div class="container py-2">
+                            <h1>
+                                Страница заказа
+                            </h1>
+                        </div>
 
 
 
-                    <div class="container py-3">
-                        <div class="bg-white p-3">
-                           
-                            <h2>  1. Получение одного заказа   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}  </div>  
-                            <h4>Ответ</h4>
-                            <pre>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+                                <h2> 1. Получение одного заказа </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     tip: '',
                                     typedFields: {}, 
@@ -1516,16 +1645,20 @@
                                     manager: '',   
                                 }
                             </pre>
-                            <hr>
-         
-                            <h2> 2. Получение логов   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/logs  </div>   
-                            <hr> 
+                                <hr>
 
-                            <h2> 3. Получение Акта выполненных работ   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/abp  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 2. Получение логов </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/logs
+                                </div>
+                                <hr>
+
+                                <h2> 3. Получение Акта выполненных работ </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/abp
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     data: [
@@ -1540,10 +1673,12 @@
                                 } 
                             </pre>
 
-                            <hr> 
+                                <hr>
 
-                            <h2> 4. Получение Истории SMS   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/sms  </div>   
+                                <h2> 4. Получение Истории SMS </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/sms
+                                </div>
                                 <h4>Ответ</h4>
                                 <pre>
                                     { 
@@ -1558,11 +1693,13 @@
                                 
                                 </pre>
 
-                            <hr> 
-                            <hr> 
-                            <h2> 5. Получение Дополнительных контактов   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/additionalContact  </div>   
-                            <h4>Ответ</h4>
+                                <hr>
+                                <hr>
+                                <h2> 5. Получение Дополнительных контактов </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/additionalContact
+                                </div>
+                                <h4>Ответ</h4>
                                 <pre>
                                 [
                                     {
@@ -1574,12 +1711,14 @@
                                     }
                                 ]
                                 </pre>
-  
-                            <hr> 
-                            <h2> 6. Получение Дополнительных расходов   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/additionalExpenses  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+
+                                <hr>
+                                <h2> 6. Получение Дополнительных расходов </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/additionalExpenses
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     data: [
@@ -1593,25 +1732,29 @@
                                 } 
                             </pre>
 
-                            <hr>  
+                                <hr>
 
 
-                            <h2> 7. Получение изображений  </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/images  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 7. Получение изображений </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/images
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     data: [ 'img1.jpg', 'img2.jpg', .. ],    
                                 } 
                             </pre>
 
-                            <hr>  
+                                <hr>
 
-                            <h2>  8.1. Копирование (Полное)   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/copy-full  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 8.1. Копирование (Полное) </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/copy-full
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     id: '', 
                                     category: '', 
@@ -1622,22 +1765,24 @@
                                     address: '', 
                                     addressDom: '',  
                                 }
-                            </pre> 
-                            <h4>Или лучше ответ в виде строки</h4>
-                            <pre>
+                            </pre>
+                                <h4>Или лучше ответ в виде строки</h4>
+                                <pre>
                                 {
                                     string: 'ID: id, Категория; Категория, Марка/модель техники: Марка, Телефоны: Телефоны,  
                                             Имя клиента:Имя , Метро: Метро, Адрес: Адрес, Квартира: Квартира ',   
                                 }
-                            </pre> 
+                            </pre>
 
-                            <hr> 
+                                <hr>
 
 
-                            <h2>  8.2. Копирование (Краткое)   </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/copy-trim  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 8.2. Копирование (Краткое) </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/copy-trim
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     id: '',   
                                     model: '',  
@@ -1645,13 +1790,15 @@
                                     address: '',  
                                     defect: '',  
                                 }
-                            </pre> 
-                            <hr> 
+                            </pre>
+                                <hr>
 
-                            <h2>  8.3. Копирование (Сводное)  </h2>
-                            <div class="route"> <div class="get"></div> /order/{id}/copy-svod  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 8.3. Копирование (Сводное) </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/copy-svod
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 {
                                     id: '', 
                                     category: '', 
@@ -1661,26 +1808,28 @@
                                     address: '', 
                                     addressDom: '',  
                                 }
-                            </pre> 
-                            <hr> 
+                            </pre>
+                                <hr>
 
 
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade  " id="order-action">
+                        <div class="container py-2">
 
                         </div>
-                    </div> 
-                </div> 
-                <div class="tab-pane fade  " id="order-action">
-                    <div class="container py-2">
-                       
-                    </div>
-                    <div class="container py-3">
-                        <div class="bg-white p-3">
-                           
-                            
-                            <h2>1. Добавление заказа  </h2>
-                            <div class="route"> <div class="post"></div> /order/add</div>  
-                            <h4> ЗАПРОС </h4>
-                            <pre>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+
+                                <h2>1. Добавление заказа </h2>
+                                <div class="route">
+                                    <div class="post"></div> /order/add
+                                </div>
+                                <h4> ЗАПРОС </h4>
+                                <pre>
                                 {
                                     tip: '',
                                     typedFields: {}, 
@@ -1715,22 +1864,24 @@
                                     manager: '',  
                                 }
                             </pre>
-  
-                            <hr>
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     200: ok
                                 }
                             </pre>
-                            <hr>
-                            
-                            
-                            <h2> 2. Получить доступные Типы заказа  </h2>
-                            <div class="route"> <div class="get"></div>/order/state</div>  
-                            <h4>ОТВЕТ</h4>
-                            
-                            <pre>
+                                <hr>
+
+
+                                <h2> 2. Получить доступные Типы заказа </h2>
+                                <div class="route">
+                                    <div class="get"></div>/order/state
+                                </div>
+                                <h4>ОТВЕТ</h4>
+
+                                <pre>
                                 ( тут fields - это уникальные поля для данного типа заказа,  
                                 categoryList, statusList - список категорий и статусов, уникальных для данного типа заказа )
 
@@ -1826,14 +1977,17 @@
                                         ]
                                     }, 
                                 }
-                            </pre> 
-                            <hr>
- 
-                            <h2>3. Обновление заказа  </h2>
-                            <h2> ( для изменения любых полей, изменения комментария, изменения типа заказа, оплаты и тд. )  </h2>
-                            <div class="route"> <div class="put"></div> /order/{id}</div>  
-                            <h4> ЗАПРОС </h4>
-                            <pre>
+                            </pre>
+                                <hr>
+
+                                <h2>3. Обновление заказа </h2>
+                                <h2> ( для изменения любых полей, изменения комментария, изменения типа заказа, оплаты и
+                                    тд. ) </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}
+                                </div>
+                                <h4> ЗАПРОС </h4>
+                                <pre>
                                 {
                                     tip: '',
                                     typedFields: {}, 
@@ -1868,19 +2022,21 @@
                                     manager: '',   
                                 }
                             </pre>
-                            <hr>
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     200: ok
                                 }
                             </pre>
-                            <hr>
+                                <hr>
 
-                            <h2>4. Обновление Акта работ  </h2> 
-                            <div class="route"> <div class="put"></div> /order/{id}/abp</div>  
-                            <h4>Запрос</h4>
-                            <pre>
+                                <h2>4. Обновление Акта работ </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}/abp
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     data: [
@@ -1894,18 +2050,20 @@
                                     ]
                                 } 
                             </pre>
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     200: ok
                                 }
                             </pre>
-                            <hr>  
-                            
-                            <h2>5. Обновление SMS </h2> 
-                            <div class="route"> <div class="put"></div> /order/{id}/sms</div>  
-                            <h4>Запрос</h4> 
-                            <pre>
+                                <hr>
+
+                                <h2>5. Обновление SMS </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}/sms
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     messages: [
@@ -1917,19 +2075,21 @@
                                 }
                             
                             </pre>
-                            
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     200: ok
                                 }
                             </pre>
-                            <hr>   
+                                <hr>
 
-                            <h2>6. Обновление контактов  </h2> 
-                            <div class="route"> <div class="put"></div> /order/{id}/additionalContact</div>  
-                            <h4>Запрос</h4> 
-                            <pre>
+                                <h2>6. Обновление контактов </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}/additionalContact
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 [
                                     {
                                         order_id: 1,
@@ -1941,20 +2101,22 @@
                                 ]
                             
                             </pre>
-                            
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     200: ok
                                 }
                             </pre>
-                            <hr> 
-                            
-                            
-                            <h2>7. Обновление доп расходов  </h2> 
-                            <div class="route"> <div class="put"></div> /order/{id}/additionalExpenses</div>  
-                            <h4>Запрос</h4> 
-                            <pre>
+                                <hr>
+
+
+                                <h2>7. Обновление доп расходов </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}/additionalExpenses
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     data: [
@@ -1968,141 +2130,572 @@
                                 } 
                             
                             </pre>
-                            
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     200: ok
                                 }
                             </pre>
-                            <hr>     
+                                <hr>
 
-                            
-                            <h2>8. Удаление заказа  </h2>
-                            <div class="route"> <div class="delete"></div> /order/{id}</div>  
-                            <h4>ОТВЕТ</h4>
-                            <pre>
+
+                                <h2>8. Удаление заказа </h2>
+                                <div class="route">
+                                    <div class="delete"></div> /order/{id}
+                                </div>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
                                 {
                                     200: ok
                                 }
                             </pre>
 
-                            <h2> 9. Добавить изображения  </h2>
-                            <div class="route"> <div class="post"></div> /order/{id}/images  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 9. Добавить изображения </h2>
+                                <div class="route">
+                                    <div class="post"></div> /order/{id}/images
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     files: [ {}, {}, {} ],    
                                 } 
                             </pre>
 
-                            <h2> 10. Удалть изображение  </h2>
-                            <div class="route"> <div class="delete"></div> /order/{id}/images  </div>   
-                            <h4>Ответ</h4>
-                            <pre>
+                                <h2> 10. Удалть изображение </h2>
+                                <div class="route">
+                                    <div class="delete"></div> /order/{id}/images
+                                </div>
+                                <h4>Ответ</h4>
+                                <pre>
                                 { 
                                     order_id: 1,
                                     img_id: '1',    
                                 } 
                             </pre>
 
+                            </div>
                         </div>
-                    </div> 
-                </div> 
-            </div> 
-        </div>
+                    </div>
+                    <div class="tab-pane fade  " id="templates-get">
+                        <div class="container py-2">
+
+                        </div>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+
+                                <h2>1. Получение JSON пустого шаблона ( для инициализации и базы дальнейшего создания)
+                                </h2>
+                                <div class="route">
+                                    <div class="get"></div> /template/base
+                                </div>
+
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                    {
+                                        value: 'template-base',
+                                        label: 'Пустой шаблон',
+                                        templateData:  data: {
+                                            user: {
+                                                title: 'Управление пользователями',
+                                                icon: 'user',
+                                                rules: [
+                                                    {
+                                                        label: 'Разрешенные типы пользователей для создания',
+                                                        desc: 'Создание пользоватетей только определенного типа',
+                                                        type: 'multiselect',
+                                                        options: [
+                                                            { label: "Администратор", value: "admin" },
+                                                            { label: "HR", value: "hr" },
+                                                            { label: "Менеджер", value: "manager" },
+                                                            { label: "Логист", value: "logist" },
+                                                            { label: "Стационарный мастер", value: "stationary_master" },
+                                                            { label: "Выездной мастер", value: "visiting_master" },
+                                                            { label: "Пеший курьер", value: "walking_courier" },
+                                                            { label: "Водитель курьер", value: "driver_courier" },
+                                                            { label: "Оператор", value: "operator" },
+                                                        ],
+                                                        fieldName: 'user_select_1'
+                                                    },
+                                                    {
+                                                        label: 'Создание пользователей по шаблонам',
+                                                        desc: 'Создание пользоватетей для доступа к системе по заранее подготовленным выборкам прав. Выбрать шаблоны можно ниже. Выдаётся только логин и пароль.',
+                                                        type: 'checkbox',
+                                                        fieldName: 'user_check_1'
+                                                    }, 
+                                                    ...  <i class="text-success">// значения обрезанны, полные данные в файле data на фронте</i>
+                                                ],
+                                            },
+                                            interview: {
+                                                title: 'Интервью',
+                                                icon: 'calendar-day',
+                                                rules: [
+                                                    {
+                                                        title: 'Действия с интервью',
+                                                        rules: [
+                                                            {
+                                                                label: 'Создание интервью',
+                                                                desc: 'Создание интервью',
+                                                                type: 'checkbox',
+                                                                fieldName: 'interview_check_1'
+                                                            },
+                                                            ...
+                                                        ]
+                                                    },
+                                                    {
+                                                        title: 'Действия с пользователями',
+                                                        rules: [
+                                                            {
+                                                                label: 'Создание соискателей',
+                                                                desc: 'Возможность создания соискателей',
+                                                                type: 'checkbox',
+                                                                fieldName: 'interview_check_5'
+                                                            },
+                                                            {
+                                                                label: 'Создание учеников',
+                                                                desc: 'Возможность создания учеников',
+                                                                type: 'checkbox',
+                                                                fieldName: 'interview_check_6'
+                                                            },
+                                                            ...
+                                                        ]
+                                                    },
+                                                ],
+                                            },
+                                            report: {
+                                                title: 'Предоставление отчётов:',
+                                                icon: 'chart-line',
+                                                rules: [
+                                                    {
+                                                        label: 'Просмотр отчетов HR',
+                                                        desc: 'Отчеты HRT, HRS, HRP. О созданных соискателях/учениках/интервью за выбранный месяц',
+                                                        type: 'checkbox',
+                                                        fieldName: 'report_check_1'
+                                                    },
+                                                    {
+                                                        label: 'Просмотр отчетов CDR',
+                                                        desc: 'Записи звонков и детали звонка',
+                                                        type: 'checkbox',
+                                                        fieldName: 'report_check_2'
+                                                    },
+                                                ],
+                                            },
+                                            sip: {
+                                                title: 'Внутренняя телефония SIP:',
+                                                icon: 'phone',
+                                                rules: [
+                                                    {
+                                                        label: 'Принимать входящие звонки',
+                                                        desc: 'Принимать входящие звонки',
+                                                        type: 'checkbox',
+                                                        fieldName: 'sip_check_1'
+                                                    },
+                                                    ...
+                                                ],
+                                            },
+                                            order: {
+                                                title: 'Заказы',
+                                                icon: 'shopping-cart',
+                                                rules: [
+                                                    {
+                                                        title: 'Основные настройки:',
+                                                        rules: [
+                                                            {
+                                                                label: 'Создание заказов',
+                                                                desc: 'Стандартное создание заказа на основе ввода данных напрямую.',
+                                                                type: 'checkbox',
+                                                                fieldName: 'order_check_1'
+                                                            },
+                                                            ...
+                                                        ]
+                                                    },
+                                                    {
+                                                        title: 'Настройки доступа к спискам заказов:',
+                                                        rules: [
+                                                            {
+                                                                label: 'Все заказы',
+                                                                desc: 'Таблица со всеми доступными заказами с основным фильтром поиска.',
+                                                                type: 'checkbox',
+                                                                fieldName: 'order_check_11'
+                                                            },
+                                                            ...
+                                                        ]
+                                                    },
+                                                    {
+                                                        title: 'Дополнительные данные:',
+                                                        rules: [
+                                                            {
+                                                                label: 'Загрузка фото',
+                                                                desc: 'Возможность загрузить в заказ фотографии.',
+                                                                type: 'checkbox',
+                                                                fieldName: 'order_check_23'
+                                                            }, 
+                                                            ...
+                                                        ]
+                                                    },
+                                                    {
+                                                        title: 'Менеджмент:',
+                                                        rules: [
+                                                            {
+                                                                label: 'Перевод заказа в категорию',
+                                                                desc: 'Перевод заказов в недоступные категории.',
+                                                                type: 'checkbox',
+                                                                fieldName: 'order_check_34'
+                                                            }, 
+                                                            ...
+                                                        ]
+                                                    },
+                                                ],
+                                            },
+                                        },
+                                        fields: { // название поля хранится в поле fieldName. название поля состоит из имя ключа + _ + тип  (user_check)
+                                            user_select_1: [],
+                                            user_check_1: false,
+                                            user_check_2: false,
+                                            ...
+                                        }
+                                    
+                                    }, 
+                                </pre>
+                                <hr>
+
+                                <h2>2. Получение списка шаблона </h2>
+                                <div class="route">
+                                    <div class="get"></div> /template/list
+                                </div>
+
+                                <h4>ОТВЕТ</h4>
+
+                                <pre>
+                                    {
+                                        list: [ 
+                                            {
+                                                "label": "nazvanie",
+                                                "value": "uuid",
+                                            } 
+                                        ]
+                                    }
+                                </pre>
+
+                                <hr />
+                                
+
+                                <h2>3. Получение одного шаблона </h2>
+                                <div class="route">
+                                    <div class="get"></div> /template/:value  <i class="text-success">// тоже значение value что и в шаблонах </i>
+                                
+                                </div>
+
+                                <h4>ОТВЕТ</h4>
+
+                                <pre>
+                                    {
+                                        
+                                        "templateData": {
+                                            data: {}, 
+                                            fields: {}
+                                        } <i class="text-success">// templateData как в запросе выше, как в файле data на фронте</i>
+                                            
+                                    }
+                                </pre>
+
+                                <hr />
+
+                                <h2>4. Получение шаблона прав выбранного пользователя</h2>
+
+                                <div class="route">
+                                    <div class="get"></div> /user/staff/:staff_id/rules   
+                                
+                                </div>
+
+                                <h4>ОТВЕТ</h4>
+
+                                <pre>
+                                    {  
+                                        template: 'template-value', <i class="text-success">// значение value из шаблона</i>
+                                        staffs_id: 1,
+                                        overwrite: {
+                                            user_check_2: true,
+                                            <i class="text-success">// список изменений прав пользователя относительно шаблона, по умолчанию пустой </i>
+                                        }
+                                       
+                                            
+                                    }
+                                </pre>
+
+                                <hr />
+
+                                <h2>5. Сохранение шаблона прав выбранного пользователя</h2>
+
+                                <div class="route">
+                                    <div class="post"></div> /user/staff/:staff_id/rules   
+                                
+                                </div>
+
+                                <h4>ЗАПРОС</h4>
+
+                                <pre>
+                                    {  
+                                        template: 'template-value', <i class="text-success">// значение value из шаблона</i> 
+                                        overwrite: {
+                                            user_check_2: true,
+                                            <i class="text-success">// список изменений прав пользователя относительно шаблона, по умолчанию пустой </i>
+                                        }
+                                       
+                                            
+                                    }
+                                </pre>
+
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                {
+                                    200: ok
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade  " id="templates">
+                        <div class="container py-2">
+
+                        </div>
+                        <div class="container py-3">
+                            <div class="bg-white p-3">
+
+
+                                <h2>1. Добавление нового шаблона с пустыми начальными данными ( страница
+                                    Настройки-Шаблоны ) </h2>
+                                <div class="route">
+                                    <div class="post"></div> /template/add
+                                </div>
+                                <h4> ЗАПРОС </h4>
+                                <pre>
+                                {
+                                    "label": "Название",
+                                    "value": "uuid", <i class="text-success">// уникальное id</i> 
+                                }
+                            </pre>
+
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                                <hr>
+
+
+                                <h2>2. Добавление нового шаблона начальными данными одного из шаблона ( страница
+                                    Настройки-Шаблоны, блок прав одного пользователя ) </h2>
+                                <div class="route">
+                                    <div class="post"></div> /template/copy-add
+                                </div>
+                                <h4> ЗАПРОС </h4>
+                                <pre>
+                                {
+                                    "label": "Название",
+                                    "value": "uuid", <i class="text-success">// уникальное id</i> 
+                                    "templateData": {
+                                        "data": {
+                                            "user": {
+                                                "title": "Управление пользователями",
+                                                "icon": "user",
+                                                "rules": [
+                                                    {
+                                                        "label": "Разрешенные типы пользователей для создания",
+                                                        "desc": "Создание пользоватетей только определенного типа",
+                                                        "type": "multiselect",
+                                                        "options": [
+                                                            {
+                                                                "label": "Администратор",
+                                                                "value": "admin"
+                                                            }, 
+                                                            ...  <i class="text-success">// остальные свойства</i>
+                                                        ],
+                                                        "fieldName": "user_select_1"
+                                                    },
+                                                    {
+                                                        "label": "Создание пользователей по шаблонам",
+                                                        "desc": "Создание пользоватетей......",
+                                                        "type": "checkbox",
+                                                        "fieldName": "user_check_1"
+                                                    },
+                                                    ...  <i class="text-success">// остальные чекбоксы</i>
+                                                ]
+                                            }, 
+
+                                            ...  <i class="text-success">// все ниже по аналогии</i>
+                                            "interview": { 
+                                            },
+                                            "report": { 
+                                            },
+                                            "sip": { 
+                                            },
+                                            "order": { 
+                                            }
+                                        },
+                                        "fields": {
+                                            "user_select_1": [],
+                                            "user_check_1": false,
+                                            "user_check_2": false,
+                                            "user_check_3": false, 
+                                            ...  <i class="text-success">// остальные значения</i>
+                                        }
+                                    }
+                                }
+                            </pre>
+
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                                <hr>
+
+
+
+                                <h2>3. Сохранение шаблона ( с страницы настроек, когда идет сохранение новых значений )
+                                </h2>
+                                <div class="route">
+                                    <div class="post"></div> /template/:id
+                                </div>
+                                <h4> ЗАПРОС </h4>
+                                <pre>
+                                {
+                                    "fields": {
+                                        "user_select_1": [],
+                                        "user_check_1": false,
+                                        "user_check_2": false,
+                                        "user_check_3": false, 
+                                        ...  <i class="text-success">// остальные значения</i>
+                                    }
+                                }
+                            </pre>
+
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                                <hr>
+
+
+                                <h2>4. Удаление шаблона (если нужно) </h2>
+                                <div class="route">
+                                    <div class="delete"></div> /template/:id
+                                </div>
+
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+                                <hr>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+
+
     </div>
-    <div class="container">
-
-       
-       
     </div>
-   
-   
 
-    </div>
-</div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    <script>
+        const localStorageName = 'api_desc_active'
+        const tabs = document.querySelectorAll('.js-tab a')
+        const tabContent = document.querySelectorAll('.js-tab-content .tab-pane')
+        const activeClassName = ' active'
+        const activeClassName2 = ' show'
 
-<script>
-    const localStorageName = 'api_desc_active'
-    const tabs = document.querySelectorAll('.js-tab a')
-    const tabContent = document.querySelectorAll('.js-tab-content .tab-pane') 
-    const activeClassName = ' active'
-    const activeClassName2 = ' show'
-     
-    tabs.forEach(item => {
-        item.addEventListener('click', () => {
-            const href = item.getAttribute("href") 
-            localStorage.setItem(localStorageName, href.replace('#', ''))
-        })
-    });
-
-    $( document ).ready(function() { 
-        // isFirst, isFirst2 - для опредеения первого входа и вкл первого активного
-        let isFirst = 0
-        let isFirst2 = 0
-
-        tabContent.forEach(item => {
-            const id = item.getAttribute("id") 
-            const current = localStorage.getItem(localStorageName )
-            if(current === id) {
-                item.classList.add('active')
-                item.classList.add('show') 
-                isFirst++
-            }
-            else {  
-                item.classList.remove('active')
-                item.classList.remove('show') 
-            } 
-        }) 
-       
         tabs.forEach(item => {
-            const href = item.getAttribute("href") 
-            
-            const current = localStorage.getItem(localStorageName )
-            if(current === href.replace('#', '') ) {
-                item.classList.add('active')  
-                isFirst2++
-            }
-            else {  
-                item.classList.remove('active') 
-            }
-
             item.addEventListener('click', () => {
-                console.log('click')
-                window.scrollTo({
-                    top: 0, 
-                    behavior: 'smooth'
+                const href = item.getAttribute("href")
+                localStorage.setItem(localStorageName, href.replace('#', ''))
+            })
+        });
+
+        $(document).ready(function () {
+            // isFirst, isFirst2 - для опредеения первого входа и вкл первого активного
+            let isFirst = 0
+            let isFirst2 = 0
+
+            tabContent.forEach(item => {
+                const id = item.getAttribute("id")
+                const current = localStorage.getItem(localStorageName)
+                if (current === id) {
+                    item.classList.add('active')
+                    item.classList.add('show')
+                    isFirst++
+                }
+                else {
+                    item.classList.remove('active')
+                    item.classList.remove('show')
+                }
+            })
+
+            tabs.forEach(item => {
+                const href = item.getAttribute("href")
+
+                const current = localStorage.getItem(localStorageName)
+                if (current === href.replace('#', '')) {
+                    item.classList.add('active')
+                    isFirst2++
+                }
+                else {
+                    item.classList.remove('active')
+                }
+
+                item.addEventListener('click', () => {
+                    console.log('click')
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    })
                 })
             })
-        })  
 
-        if(!isFirst) {
-            tabContent[0].classList.add('active')
-            tabContent[0].classList.add('show')
-        }
-        if(!isFirst2) {
-            tabs[0].classList.add('active') 
-        }
-    }); 
-</script>
+            if (!isFirst) {
+                tabContent[0].classList.add('active')
+                tabContent[0].classList.add('show')
+            }
+            if (!isFirst2) {
+                tabs[0].classList.add('active')
+            }
+        }); 
+    </script>
 
-<script>    
-    const button = document.querySelector('.js-toggle-button')
-    const buttonToggle = document.querySelectorAll('.js-toggle-item')
-    const targetToggle = document.querySelector('.js-toggle-target')
+    <script>
+        const button = document.querySelector('.js-toggle-button')
+        const buttonToggle = document.querySelectorAll('.js-toggle-item')
+        const targetToggle = document.querySelector('.js-toggle-target')
 
-    button.addEventListener('click', () => { 
-        buttonToggle.forEach( item => {
-            item.classList.toggle('d-none')
+        button.addEventListener('click', () => {
+            buttonToggle.forEach(item => {
+                item.classList.toggle('d-none')
+            })
+            targetToggle.classList.toggle('d-none')
         })
-        targetToggle.classList.toggle('d-none')
-    })
-</script>
+    </script>
 
 </body>
+
 </html>
