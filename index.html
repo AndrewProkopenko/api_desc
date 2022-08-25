@@ -87,7 +87,7 @@
             z-index: 100;
         }
 
-        .container { 
+        .container {
             max-width: 1440px !important;
         }
     </style>
@@ -133,21 +133,34 @@
                         <a class="nav-link " data-toggle="tab" href="#interview">Записи на интервью</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-toggle="tab" href="#order-list">Список заказов </a>
+                        <a class="nav-link " data-toggle="tab" href="#order-list">
+                            Список заказов
+                            <span class="badge badge-pill badge-info">Обновил</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#order">
+                            Страница заказа
+                            <span class="badge badge-pill badge-info">Обновил</span>
+                        </a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#order-action">
+                            Действия с заказом
+                            <span class="badge badge-pill badge-info">Обновил</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-toggle="tab" href="#order">Страница заказа </a>
+                        <a class="nav-link " data-toggle="tab" href="#templates-get">
+                            Получение шаблонов
+                            <span class="badge badge-pill badge-danger">Новое</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " data-toggle="tab" href="#order-action">Действия с заказом </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " data-toggle="tab" href="#templates-get">Получение шаблонов <span
-                                class="badge badge-pill badge-danger">Новое</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " data-toggle="tab" href="#templates">Шаблоны <span
-                                class="badge badge-pill badge-danger">Новое</span></a>
+                        <a class="nav-link " data-toggle="tab" href="#templates">
+                            Шаблоны
+                            <span class="badge badge-pill badge-danger">Новое</span>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -1540,7 +1553,8 @@
                                     dataFrom: "",  // дата от
                                     dataTo: "", // дата до
                                     category: "" , 
-                                    isExecute: true, // Исполнить
+                                    status: "" , 
+                                    type: '', // тип заказа
                                     search: "" // поисковая строка
                                 }
                             </pre>
@@ -1550,38 +1564,7 @@
                                 {
                                     orders: [
                                         {
-                                            tip: '',
-                                            typedFields: {}, 
-                                            id: '', 
-                                            created: '',  
-                                            status: '',
-                                            category: '',
-                                            name: '',
-                                            executionTime: '',
-                                            address: '', // до улицы
-                                            addressDom: '',  // квартира 
-                                            addressIntercom : '', // домофон
-                                            metroStation: '',
-                                            geo: '',
-                                            amount: '', //Объявленная сумма
-                                            isGuarantee: false, 
-                                            isQuickly: false, 
-                                            isRecall: false, 
-                                            isProcessing: false, 
-                                            comment: '',   
-                                            model: '', 
-                                            defect: '', 
-                                            prepayment: '', 
-                                            isCashless: false, 
-                                            orderDepartment: '', 
-                                            isPrepayment: false, 
-                                            isLogistics: false,  
-                                            isCorporate: false,  
-                                            departureEngineer: '', 
-                                            courierTake: '', 
-                                            courierGive: '',  
-                                            manager: '', 
-                                             
+                                            заказ
                                         }, ....
                                     ],
                                     "all":"общее количество сотрудников для пагинации"
@@ -1594,7 +1577,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade  " id="order">
+                    <!-- <div class="tab-pane fade  " id="order">
                         <div class="container py-2">
                             <h1>
                                 Страница заказа
@@ -1634,8 +1617,7 @@
                                     defect: '', 
                                     prepayment: '', 
                                     isCashless: false, 
-                                    orderDepartment: '',
-                                    // после создания
+                                    orderDepartment: '', 
                                     isPrepayment: false, 
                                     isLogistics: false,  
                                     isCorporate: false,  
@@ -1815,7 +1797,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="tab-pane fade  " id="order-action">
                         <div class="container py-2">
 
@@ -1831,37 +1813,37 @@
                                 <h4> ЗАПРОС </h4>
                                 <pre>
                                 {
-                                    tip: '',
-                                    typedFields: {}, 
-                                    id: '',  
-                                    category: '',
-                                    name: '',
-                                    executionTime: '',
+                                    type: '',
+                                    typedFields: {
+                                        category: "bak", // обязательно
+                                        status: "new", // обязательно
+                                        value: 12,  // какие-то поля, меняются в зависимости от типа
+                                        distance: 100
+                                    }, // тут хранятся поля привязанные к типу
+                                    order_id: '',
+                                    created: '', 
+                                    client_fio: '',  
+                                    client_id: '',  
+                                    executionTime: '', // время выполнения
                                     address: '',
                                     addressDom: '', 
-                                    addressIntercom : '',
-                                    metroStation: '',
-                                    geo: '',
-                                    amount: '',
-                                    isGuarantee: false, 
-                                    isQuickly: false, 
-                                    isRecall: false, 
-                                    isProcessing: false, 
-                                    comment: '',  
-                                    model: '', 
-                                    defect: '', 
-                                    prepayment: '', 
-                                    isCashless: false, 
-                                    orderDepartment: '',
-                                    // после создания
-                                    isPrepayment: false, 
-                                    isLogistics: false,  
-                                    isCorporate: false,  
-                                    departureEngineer: '', 
-                                    courierTake: '', 
-                                    courierGive: '', 
-                                    courierGive: '', 
-                                    manager: '',  
+                                    addressIntercom: '', // домофон
+                                    metroStation: '', 
+                                    geo_lat: 0, // гео поля address
+                                    geo_lon: 0,
+                                    amount: '', // объявленная сумма
+                                    comment: '', 
+                                    prepayment: '',
+                                    isGuarantee: false,
+                                    isQuickly: false,
+                                    isRecall: false,
+                                    isProcessing: false,
+                                    isCashless: false,
+                                    isMutniy: false, 
+                                    isBeznal: false, 
+                                    isPrepayment: false,
+                                    isLogistics: false,
+                                    isCorporate: false
                                 }
                             </pre>
 
@@ -1894,17 +1876,7 @@
                                             distance: '', 
                                             category: '', 
                                             status: ''
-                                        }, 
-                                        categoryList: [
-                                            {value: 'container', title: 'Контейнер'}, 
-                                            {value: 'bak', title: 'Бак'}
-                                        ],
-                                        statusList: [ 
-                                            {value: 'new', title: 'Новая'}, 
-                                            {value: 'sorvana', title: 'Сорвана'},
-                                            {value: 'vrabote', title: 'В работе'},
-                                            {value: 'done', title: 'Выполнена'}
-                                        ]
+                                        },  
                                     },
                                     visitingRepair: {
                                         code: 'visitingRepair', 
@@ -1914,21 +1886,7 @@
                                             price: '', 
                                             category: '', 
                                             status: ''
-                                        },  
-                                        categoryList: [
-                                            {value: 'tv', title: 'Телевизор'}, 
-                                            {value: 'comp', title: 'Компьютер'},
-                                            {value: 'washing', title: 'Стиральная машина'},
-                                            {value: 'posuda', title: 'Посудомойка'},
-                                        ],
-                                        statusList: [ 
-                                            {value: 'new', title: 'Новая'}, 
-                                            {value: 'sorvana', title: 'Сорвана'},
-                                            {value: 'vrabote', title: 'В работе'},
-                                            {value: 'done', title: 'Выполнена'},
-                                            {value: 'success', title: 'Починили'},
-                                            {value: 'unsuccess', title: 'Не починили'}
-                                        ]
+                                        },   
                                     }, 
                                     stationRepair: {
                                         title: 'Стационарный ремонт',
@@ -1938,21 +1896,7 @@
                                             price: '', 
                                             category: '', 
                                             status: ''
-                                        }, 
-                                        categoryList: [
-                                            {value: 'tv', title: 'Телевизор'}, 
-                                            {value: 'comp', title: 'Компьютер'},
-                                            {value: 'washing', title: 'Стиральная машина'},
-                                            {value: 'posuda', title: 'Посудомойка'},
-                                        ],
-                                        statusList: [ 
-                                            {value: 'new', title: 'Новая'}, 
-                                            {value: 'sorvana', title: 'Сорвана'},
-                                            {value: 'vrabote', title: 'В работе'},
-                                            {value: 'done', title: 'Выполнена'},
-                                            {value: 'success', title: 'Починили'},
-                                            {value: 'unsuccess', title: 'Не починили'}
-                                        ]
+                                        },  
                                     }, 
                                     transporting: {
                                         title: 'Грузоперевозки', 
@@ -1962,19 +1906,7 @@
                                             price: '', 
                                             category: '', 
                                             status: ''
-                                        }, 
-                                        categoryList: [
-                                            {value: 'fura', title: 'Фура'}, 
-                                            {value: 'gazel', title: 'Газель'},
-                                            {value: 'universal', title: 'Универсал'},
-                                            {value: 'sedan', title: 'Легковая'},
-                                        ],
-                                        statusList: [ 
-                                            {value: 'new', title: 'Новая'}, 
-                                            {value: 'sorvana', title: 'Сорвана'},
-                                            {value: 'vrabote', title: 'В работе'},
-                                            {value: 'done', title: 'Выполнена'}, 
-                                        ]
+                                        },  
                                     }, 
                                 }
                             </pre>
@@ -1989,40 +1921,111 @@
                                 <h4> ЗАПРОС </h4>
                                 <pre>
                                 {
-                                    tip: '',
-                                    typedFields: {}, 
-                                    id: '',  
-                                    category: '',
-                                    name: '',
-                                    executionTime: '',
-                                    address: '',
-                                    addressDom: '', 
-                                    addressIntercom : '',
-                                    metroStation: '',
-                                    geo: '',
-                                    amount: '',
-                                    isGuarantee: false, 
-                                    isQuickly: false, 
-                                    isRecall: false, 
-                                    isProcessing: false, 
-                                    comment: '',  
-                                    model: '', 
-                                    defect: '', 
-                                    prepayment: '', 
-                                    isCashless: false, 
-                                    orderDepartment: '',
-                                    // после создания
-                                    isPrepayment: false, 
-                                    isLogistics: false,  
-                                    isCorporate: false,  
-                                    departureEngineer: '', 
-                                    courierTake: '', 
-                                    courierGive: '', 
-                                    courierGive: '', 
-                                    manager: '',   
+                                    объект заказа целиком  
                                 }
                             </pre>
                                 <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                {
+                                    200: ok
+                                }
+                            </pre>
+
+
+                                <hr>
+                                <h2>3. Блок менеджмент (получение) </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/manager
+                                </div>
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                    { 
+                                        orderDepartment: '', 
+                                        departureEngineer: '',
+                                        courierTake: '',
+                                        courierGive: '',
+                                        manager: '', 
+                                    }
+                                </pre>
+                                
+                                <hr>
+                                <h2>3. Блок менеджмент (Обновление) </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}/manager
+                                </div>
+                                <hr>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                    { 
+                                        orderDepartment: '', 
+                                        departureEngineer: '',
+                                        courierTake: '',
+                                        courierGive: '',
+                                        manager: '', 
+                                    }
+                                </pre>
+                                <hr>
+
+                                <h2>4. Получение Акта работ </h2>
+                                <div class="route">
+                                    <div class="get"></div> /order/{id}/abp
+                                </div>
+                                <h4>ОТВЕТ</h4>
+                                <pre>
+                                    {  
+                                        orders_id: 1,
+                                        sale: 0,
+                                        totalPrice: 0,
+                                        list: [
+                                            {
+                                                name: '',
+                                                sn: '',
+                                                quantity: 1,
+                                                price: 0,
+                                                garanty: '',
+                                                date: ''
+                                            }
+                                        ] 
+                                    }  
+                                </pre>
+                                <hr>
+
+                                <h2>4. Обновление Акта работ (для добавления, удаления, пересчета скидки) </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}/abp
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
+                                    { 
+                                        цуликом объект отправляется
+                                    } 
+                                </pre>
+                                <hr>
+
+
+
+                                <h2>7. Обновление доп расходов </h2>
+                                <div class="route">
+                                    <div class="put"></div> /order/{id}/additionalExpenses
+                                </div>
+                                <h4>Запрос</h4>
+                                <pre>
+                                { 
+                                    order_id: 1,
+                                    data: [
+                                        {
+                                            id: '',  
+                                            price: '',
+                                            name: '',   
+                                            date: '',   
+                                        },  ...
+                                    ]
+                                } 
+                            
+                            </pre>
+
                                 <h4>ОТВЕТ</h4>
                                 <pre>
                                 {
@@ -2031,32 +2034,6 @@
                             </pre>
                                 <hr>
 
-                                <h2>4. Обновление Акта работ </h2>
-                                <div class="route">
-                                    <div class="put"></div> /order/{id}/abp
-                                </div>
-                                <h4>Запрос</h4>
-                                <pre>
-                                { 
-                                    order_id: 1,
-                                    data: [
-                                        {
-                                            name: '',
-                                            sn: '', 
-                                            quantity: '',  
-                                            price: '',
-                                            gananty: '',   
-                                        },  ...
-                                    ]
-                                } 
-                            </pre>
-                                <h4>ОТВЕТ</h4>
-                                <pre>
-                                {
-                                    200: ok
-                                }
-                            </pre>
-                                <hr>
 
                                 <h2>5. Обновление SMS </h2>
                                 <div class="route">
@@ -2083,62 +2060,6 @@
                                 }
                             </pre>
                                 <hr>
-
-                                <h2>6. Обновление контактов </h2>
-                                <div class="route">
-                                    <div class="put"></div> /order/{id}/additionalContact
-                                </div>
-                                <h4>Запрос</h4>
-                                <pre>
-                                [
-                                    {
-                                        order_id: 1,
-                                        name: '', 
-                                        post: '', 
-                                        phone: '', 
-                                        email: ''
-                                    }, 
-                                ]
-                            
-                            </pre>
-
-                                <h4>ОТВЕТ</h4>
-                                <pre>
-                                {
-                                    200: ok
-                                }
-                            </pre>
-                                <hr>
-
-
-                                <h2>7. Обновление доп расходов </h2>
-                                <div class="route">
-                                    <div class="put"></div> /order/{id}/additionalExpenses
-                                </div>
-                                <h4>Запрос</h4>
-                                <pre>
-                                { 
-                                    order_id: 1,
-                                    data: [
-                                        {
-                                            name: '',  
-                                            price: '',
-                                            name: '',   
-                                            date: '',   
-                                        },  ...
-                                    ]
-                                } 
-                            
-                            </pre>
-
-                                <h4>ОТВЕТ</h4>
-                                <pre>
-                                {
-                                    200: ok
-                                }
-                            </pre>
-                                <hr>
-
 
                                 <h2>8. Удаление заказа </h2>
                                 <div class="route">
@@ -2380,12 +2301,13 @@
                                 </pre>
 
                                 <hr />
-                                
+
 
                                 <h2>3. Получение одного шаблона </h2>
                                 <div class="route">
-                                    <div class="get"></div> /template/:value  <i class="text-success">// тоже значение value что и в шаблонах </i>
-                                
+                                    <div class="get"></div> /template/:value <i class="text-success">// тоже значение
+                                        value что и в шаблонах </i>
+
                                 </div>
 
                                 <h4>ОТВЕТ</h4>
@@ -2406,8 +2328,8 @@
                                 <h2>4. Получение шаблона прав выбранного пользователя</h2>
 
                                 <div class="route">
-                                    <div class="get"></div> /user/staff/:staff_id/rules   
-                                
+                                    <div class="get"></div> /user/staff/:staff_id/rules
+
                                 </div>
 
                                 <h4>ОТВЕТ</h4>
@@ -2430,8 +2352,8 @@
                                 <h2>5. Сохранение шаблона прав выбранного пользователя</h2>
 
                                 <div class="route">
-                                    <div class="post"></div> /user/staff/:staff_id/rules   
-                                
+                                    <div class="post"></div> /user/staff/:staff_id/rules
+
                                 </div>
 
                                 <h4>ЗАПРОС</h4>
@@ -2605,7 +2527,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
 
 
 
